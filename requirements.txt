@@ -1,0 +1,15 @@
+
+# LexRank (Erkan and Radev, 2004) represents sentences in a graph and uses
+# eigenvector centrality to calculate sentence importance scores. 
+lexrank
+
+# TextRank (Mihalcea and Tarau, 2004) is another graph-based sentence ranking
+# method that obtains vertex scores by running a “random-surfer model” until
+# convergence. 
+# also, MMR (Carbonell and Goldstein, 1998) calculates sentence scores by
+# balancing the redundancy score with the information relevance score. 
+gensim==3.8.3
+
+datasets==1.6.2
+# transformers==4.6.0.dev0
+transformers==4.6.1
