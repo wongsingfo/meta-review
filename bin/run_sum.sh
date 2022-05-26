@@ -2,7 +2,8 @@
 
 mkdir -p results
 
-CUDA_VISIBLE_DEVICES=0 python src/summarization.py \
+CUDA_VISIBLE_DEVICES=0 \
+	python src/summarization.py \
 	--model_name_or_path facebook/bart-large-cnn \
 	--do_train --do_eval --do_predict \
 	--train_file      data/filtered_controlled_data/train_rate_concat_sent-ctrl.csv \
@@ -14,5 +15,6 @@ CUDA_VISIBLE_DEVICES=0 python src/summarization.py \
 	--per_device_eval_batch_size=1 \
 	--predict_with_generate \
 	--seed 0 --save_total_limit 1 \
-	--max_source_length 1024 --max_target_length 400 --gen_target_min 20
+	--max_source_length 1024 --max_target_length 400 --gen_target_min 20 \
+	2>&1 | tee summarization.log
 
