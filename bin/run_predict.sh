@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-mkdir -p results
+mkdir -p results/html
 
 args="\
 	--model_name_or_path facebook/bart-large-cnn \
 	--do_predict \
 	--test_file       data/predict/input.csv \
 	--output_dir      data/predict \
+	--attention_html  results/html \
 	--predict_with_generate \
 	--max_source_length 1024 --max_target_length 400 --gen_target_min 20 \
 "

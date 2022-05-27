@@ -45,6 +45,7 @@ from args import ModelArguments, DataTrainingArguments
 from dataset import get_dataset
 from model import get_pretrained_model
 from trainer import Seq2SeqTrainerWithAttention
+from visualize import visualize_cross_attention
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 check_min_version("4.6.0.dev0")
@@ -245,8 +246,6 @@ def main():
             max_length=data_args.val_max_target_length,
             num_beams=data_args.num_beams,
         )
-        attention = predict_results.attention
-        print(attention)
         metrics = predict_results.metrics
         max_predict_samples = (
             data_args.max_predict_samples if data_args.max_predict_samples is not None else len(predict_dataset)
@@ -265,6 +264,10 @@ def main():
                 output_prediction_file = os.path.join(training_args.output_dir, "generated_predictions.txt")
                 with open(output_prediction_file, "w", encoding='utf-8') as writer:
                     writer.write("\n".join(predictions))
+
+        attention = predict_results.attention
+        if data_args.attention_html:
+            visualize_cross_attention(attention, tokenizer, predict_dataset, predict_results.predictions, data_args.attention_html)
 
     if training_args.push_to_hub:
         trainer.push_to_hub()

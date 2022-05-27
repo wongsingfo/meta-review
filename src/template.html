@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .selected {
+        background-color: #ffc107;
+      }
+
+      body {
+        display: flex;
+        justifiy-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" x-data="App()">
+      <h1>Paper review summarization</h1>
+      <h2>Control and reviews</h2>
+      <p>
+        <!-- <span :style="styles[0]">I</span> -->
+        <!-- <span :style="styles[1]">happy</span> -->
+        {{text}}
+      </p>
+      <h2>Summary</h2>
+      <p>
+        <!-- <span @click="onSelect(0)" :class="selected===0 && 'selected'"> The first sentence. </span> -->
+        {{summary}}
+      </p>
+    </div>
+    <script type="application/javascript">
+      // const data = [ [] ];
+      {{weight}}
+
+      function App() {
+        function getColor(intensity) {
+          console.assert(0 <= intensity && intensity <= 1);
+          return `background-color: rgba(255, 0, 0, ${intensity})`;
+        }
+
+        function onSelect(sent_id) {
+          let styles = [];
+          let len = data[0].length;
+          for (let i = 0; i < len; i++) {
+            let intensity = data[sent_id][i];
+            intensity = Math.min(intensity, 1.0);
+            styles[i] = getColor(intensity);
+          }
+          this.selected = sent_id;
+          this.styles = styles;
+        }
+
+        return {
+          onSelect,
+          selected: null,
+          styles: [],
+        };
+      }
+    </script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+  </body>
+</html>

@@ -86,6 +86,12 @@ class DataTrainingArguments:
             "help": "An optional input test data file to evaluate the metrics (rouge) on " "(a jsonlines or csv file)."
         },
     )
+    attention_html: Optional[str] = field(
+        default=None,
+        metadata={
+            "help": "The directory to store the HTML files that visualize the cross attention"
+        },
+    )
     overwrite_cache: bool = field(
         default=False, metadata={"help": "Overwrite the cached training and evaluation sets"}
     )
