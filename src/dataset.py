@@ -83,7 +83,7 @@ def preprocess_dataset(dataset, processosr, max_samples, remove_columns) -> Data
     )
     return dataset
 
-def get_dataset(data_args, model_args, training_args, tokenizer) -> tuple[DatasetDict, DatasetDict, DatasetDict]:
+def get_dataset(data_args, model_args, training_args, tokenizer):
     datasets = prepare_dataset(data_args, model_args)
 
     if training_args.do_train:
@@ -112,11 +112,14 @@ def get_dataset(data_args, model_args, training_args, tokenizer) -> tuple[Datase
         ignore_pad_token_for_loss=data_args.ignore_pad_token_for_loss
     )
 
-    train_dataset = training_args.do_train and preprocess_dataset(
-        datasets['train'], processosr, data_args.max_train_samples, column_names)
-    eval_dataset = training_args.do_eval and preprocess_dataset(
-        datasets['validation'], processosr, data_args.max_eval_samples, column_names)
-    test_dataset = training_args.do_predict and preprocess_dataset(
-        datasets['test'], processosr, data_args.max_predict_samples, column_names)
+    train_dataset = None
+    if training_args.do_train:
+        train_dataset = preprocess_dataset(datasets['train'], processosr, data_args.max_train_samples, column_names)
+    eval_dataset = None
+    if training_args.do_eval:
+        eval_dataset = preprocess_dataset(datasets['validation'], processosr, data_args.max_eval_samples, column_names)
+    test_dataset = None
+    if training_args.do_predict:
+        test_dataset = preprocess_dataset(datasets['test'], processosr, data_args.max_predict_samples, column_names)
 
     return train_dataset, eval_dataset, test_dataset

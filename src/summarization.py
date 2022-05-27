@@ -21,7 +21,6 @@ Fine-tuning the library models for sequence to sequence.
 import logging
 import os
 import sys
-from typing import cast
 
 import nltk  # Here to have a nice missing dependency error message early on
 import numpy as np
@@ -30,13 +29,9 @@ from datasets import load_dataset, load_metric, DatasetDict
 import transformers
 from filelock import FileLock
 from transformers import (
-    AutoConfig,
-    AutoModelForSeq2SeqLM,
     AutoTokenizer,
     DataCollatorForSeq2Seq,
     HfArgumentParser,
-    PretrainedConfig,
-    PreTrainedModel,
     Seq2SeqTrainer,
     Seq2SeqTrainingArguments,
     set_seed,
@@ -46,11 +41,10 @@ from transformers.file_utils import is_offline_mode
 from transformers.trainer_utils import get_last_checkpoint, is_main_process
 from transformers.utils import check_min_version
 
-from transformers.tokenization_utils_base import BatchEncoding
-
 from args import ModelArguments, DataTrainingArguments
 from dataset import get_dataset
 from model import get_pretrained_model
+from trainer import Seq2SeqTrainerWithAttention
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 check_min_version("4.6.0.dev0")
@@ -185,12 +179,10 @@ def main():
         if data_args.ignore_pad_token_for_loss:
             # Replace -100 in the labels as we can't decode them.
             labels = np.where(labels != -100, labels, tokenizer.pad_token_id)
-        decoded_labels = tokenizer.batch_decode(
-            labels, skip_special_tokens=True)
+        decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
 
         # Some simple post-processing
-        decoded_preds, decoded_labels = postprocess_text(
-            decoded_preds, decoded_labels)
+        decoded_preds, decoded_labels = postprocess_text(decoded_preds, decoded_labels)
 
         result = metric.compute(predictions=decoded_preds,
                                 references=decoded_labels, use_stemmer=True)
@@ -198,14 +190,13 @@ def main():
         # Extract a few results from ROUGE
         result = {key: value.mid.fmeasure * 100 for key, value in result.items()}
 
-        prediction_lens = [np.count_nonzero(
-            pred != tokenizer.pad_token_id) for pred in preds]
+        prediction_lens = [np.count_nonzero(pred != tokenizer.pad_token_id) for pred in preds]
         result["gen_len"] = np.mean(prediction_lens)
         result = {k: round(v, 4) for k, v in result.items()}
         return result
 
     # Initialize our Trainer
-    trainer = Seq2SeqTrainer(
+    trainer = Seq2SeqTrainerWithAttention(
         model=model,
         args=training_args,
         train_dataset=train_dataset,
@@ -226,9 +217,7 @@ def main():
         trainer.save_model()  # Saves the tokenizer too for easy upload
 
         metrics = train_result.metrics
-        max_train_samples = (
-            data_args.max_train_samples if data_args.max_train_samples is not None else len(train_dataset)
-        )
+        max_train_samples = data_args.max_train_samples or len(train_dataset)
         metrics["train_samples"] = min(max_train_samples, len(train_dataset))
 
         trainer.log_metrics("train", metrics)
@@ -240,10 +229,8 @@ def main():
     if training_args.do_eval:
         logger.info("*** Evaluate ***")
 
-        metrics = trainer.evaluate(
-            max_length=data_args.val_max_target_length, num_beams=data_args.num_beams, metric_key_prefix="eval"
-        )
-        max_eval_samples = data_args.max_eval_samples if data_args.max_eval_samples is not None else len(eval_dataset)
+        metrics = trainer.evaluate(max_length=data_args.val_max_target_length, num_beams=data_args.num_beams, metric_key_prefix="eval")
+        max_eval_samples = data_args.max_eval_samples or len(eval_dataset)
         metrics["eval_samples"] = min(max_eval_samples, len(eval_dataset))
 
         trainer.log_metrics("eval", metrics)
@@ -258,6 +245,8 @@ def main():
             max_length=data_args.val_max_target_length,
             num_beams=data_args.num_beams,
         )
+        attention = predict_results.attention
+        print(attention)
         metrics = predict_results.metrics
         max_predict_samples = (
             data_args.max_predict_samples if data_args.max_predict_samples is not None else len(predict_dataset)
@@ -273,8 +262,7 @@ def main():
                     predict_results.predictions, skip_special_tokens=True, clean_up_tokenization_spaces=True
                 )
                 predictions = [pred.strip() for pred in predictions]
-                output_prediction_file = os.path.join(
-                    training_args.output_dir, "generated_predictions.txt")
+                output_prediction_file = os.path.join(training_args.output_dir, "generated_predictions.txt")
                 with open(output_prediction_file, "w", encoding='utf-8') as writer:
                     writer.write("\n".join(predictions))
 

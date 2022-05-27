@@ -2,7 +2,6 @@ from transformers import (
     AutoConfig,
     PreTrainedModel,
     PretrainedConfig,
-    AutoTokenizer,
     AutoModelForSeq2SeqLM
 )
 
