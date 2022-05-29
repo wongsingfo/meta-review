@@ -1,1 +1,1 @@
-Data used to train the control code predictior.
+```generate.ipynb``` shows that how to obtain data used in experiments.
