@@ -11,27 +11,42 @@
       }
 
       body {
-        display: flex;
-        justifiy-content: center;
-        align-items: center;
         min-height: 100vh;
+        padding-top: 1rem;
+      }
+
+      footer {
+        border-top: solid 1px black;
+        position: sticky;
+        background: white;
+        bottom: 0;
+        display: flex;
+        justify-content:center;
+        width: 100%;
+        padding: 1rem 0;
       }
     </style>
   </head>
   <body>
-    <div class="container" x-data="App()">
-      <h1>Paper review summarization</h1>
-      <h2>Control and reviews</h2>
-      <p>
-        <!-- <span :style="styles[0]">I</span> -->
-        <!-- <span :style="styles[1]">happy</span> -->
-        {{text}}
-      </p>
-      <h2>Summary</h2>
-      <p>
-        <!-- <span @click="onSelect(0)" :class="selected===0 && 'selected'"> The first sentence. </span> -->
-        {{summary}}
-      </p>
+    <div x-data="App()">
+      <div class="container">
+        <h1>Paper review summarization</h1>
+        <h2>Control and reviews</h2>
+        <p>
+          <!-- <span :style="styles[0]">I</span> -->
+          <!-- <span :style="styles[1]">happy</span> -->
+          {{text}}
+        </p>
+      </div>
+      <footer>
+        <div class="container">
+          <h2>Summary</h2>
+          <p>
+            <!-- <span @click="onSelect(0)" :class="selected===0 && 'selected'"> The first sentence. </span> -->
+            {{summary}}
+          </p>
+        </div>
+      </footer>
     </div>
     <script type="application/javascript">
       // const data = [ [] ];

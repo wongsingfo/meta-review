@@ -1,4 +1,5 @@
-import torch
+from torch import Tensor
+import numpy as np
 import os
 import pdb
 import html
@@ -63,16 +64,39 @@ def _index_text(tokenizer, token_id):
     return text, offset_mapping
 
 
-def _visualize_text_html(text, offset):
+def _visualize_text_html(text, offset, newline_text=[], hr_text=[]):
+    def need_newline(end, pattern):
+        text_tail = text[:end]
+        for p in pattern:
+            if text_tail.endswith(p):
+                return True
+        return False
+
+    newline = '\n</p><p>\n'
     output = []
+    first_dot = True
     last_end = 0
     for i, (start, end) in enumerate(offset):
         if start < end:
+            # space between words
             if not last_end == start:
                 output.append('\n')
+
             elem = html.escape(text[start:end])
             s = f'<span :style="styles[{i}]">{elem}</span>'
             output.append(s)
+
+            if need_newline(end, newline_text):
+                output.append(newline)
+
+            if need_newline(end, hr_text):
+                output.append('<hr/>')
+
+            # newline for the first sentence, i.e., the control code
+            if first_dot and s == '.':
+                first_dot = False
+                output.append(newline)
+
             last_end = end
     return ''.join(output)
 
@@ -100,26 +124,44 @@ def _visualize_split(token_id):
     return [(i+1, j+1) for i, j in zip(split_index, split_index[1:])]
 
 
-def _tensor_sentence_max(tensor, sentences):
+def _tensor_sentence_max(tensor, sentences, softmax_len = None):
+
+    def softmax(arr: np.ndarray):
+        # e = np.exp(arr)
+        # return e / np.sum(e)
+        return arr / np.max(arr)
+
     results = []
     for start, end in sentences:
         # BUG!!: tensor.shape[0] < end
         if tensor.shape[0] < end:
             raise KnownBugsException("the attention output dim is too small")
-        arr = tensor[start:end].max(0).tolist()
-        results.append(arr)
+        arr = tensor[start:end].max(0)
+
+        if softmax_len:
+            # ignore arr[0] (i.e. <sos>)
+            arr[1:softmax_len] = softmax(arr[1:softmax_len])
+
+        results.append(arr.tolist())
+
     return results
 
 
 def _visualize(tensor, tokenizer, input_text, output_text, file):
+    arrow_token_id = 45994
+    newline_text = ['<sep>']
+    hr_text = ['<REVBREAK>', '==>']
+
     text, text_o = _index_text(tokenizer, input_text)
-    text_html = _visualize_text_html(text, text_o)
+    text_html = _visualize_text_html(text, text_o, newline_text, hr_text)
     sentences = _visualize_split(output_text)
+
+    softmax_len = input_text.index(arrow_token_id)
 
     summary, summary_o = _index_text(tokenizer, output_text)
     summary_html = _visualize_summary_html(summary, summary_o, sentences)
 
-    weight = _tensor_sentence_max(tensor, sentences)
+    weight = _tensor_sentence_max(tensor, sentences, softmax_len)
     weight_json = f"const data = {json.dumps(weight)};"
 
     template = read_file('src/template.html')
