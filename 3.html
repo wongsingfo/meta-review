@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .selected {
+        background-color: #ffc107;
+      }
+
+      body {
+        min-height: 100vh;
+        padding-top: 1rem;
+      }
+
+      footer {
+        border-top: solid 1px black;
+        position: sticky;
+        background: white;
+        bottom: 0;
+        display: flex;
+        justify-content:center;
+        width: 100%;
+        padding: 1rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div x-data="App()">
+      <div class="container">
+        <h1>Paper review summarization</h1>
+        <h2>Control and reviews</h2>
+        <p>
+          <!-- <span :style="styles[0]">I</span> -->
+          <!-- <span :style="styles[1]">happy</span> -->
+          <span :style="styles[1]">rating</span><span :style="styles[2]">_</span><span :style="styles[3]">summary</span>
+<span :style="styles[4]">|</span>
+<span :style="styles[5]">weakness</span>
+<span :style="styles[6]">|</span>
+<span :style="styles[7]">misc</span>
+<span :style="styles[8]">|</span>
+<span :style="styles[9]">decision</span>
+<span :style="styles[10]">|</span>
+<span :style="styles[11]">decision</span>
+<span :style="styles[12]">==</span><span :style="styles[13]">&gt;</span><hr/>
+<span :style="styles[14]">R</span><span :style="styles[15]">1</span>
+<span :style="styles[16]">rating</span>
+<span :style="styles[17]">score</span><span :style="styles[18]">:</span>
+<span :style="styles[19]">5</span><span :style="styles[20]">,</span>
+<span :style="styles[21]">R</span><span :style="styles[22]">2</span>
+<span :style="styles[23]">rating</span>
+<span :style="styles[24]">score</span><span :style="styles[25]">:</span>
+<span :style="styles[26]">5</span><span :style="styles[27]">,</span>
+<span :style="styles[28]">R</span><span :style="styles[29]">3</span>
+<span :style="styles[30]">rating</span>
+<span :style="styles[31]">score</span><span :style="styles[32]">:</span>
+<span :style="styles[33]">6</span><span :style="styles[34]">.</span>
+<span :style="styles[35]">Quick</span>
+<span :style="styles[36]">summary</span><span :style="styles[37]">:</span>
+<span :style="styles[38]">&lt;</span><span :style="styles[39]">se</span><span :style="styles[40]">p</span><span :style="styles[41]">&gt;</span>
+</p><p>
+
+<span :style="styles[42]">This</span>
+<span :style="styles[43]">paper</span>
+<span :style="styles[44]">proposes</span>
+<span :style="styles[45]">an</span>
+<span :style="styles[46]">energy</span>
+<span :style="styles[47]">based</span>
+<span :style="styles[48]">formulation</span>
+<span :style="styles[49]">to</span>
+<span :style="styles[50]">the</span>
+<span :style="styles[51]">B</span><span :style="styles[52]">EG</span><span :style="styles[53]">AN</span>
+<span :style="styles[54]">model</span>
+<span :style="styles[55]">and</span>
+<span :style="styles[56]">mod</span><span :style="styles[57]">ifies</span>
+<span :style="styles[58]">it</span>
+<span :style="styles[59]">to</span>
+<span :style="styles[60]">include</span>
+<span :style="styles[61]">an</span>
+<span :style="styles[62]">image</span>
+<span :style="styles[63]">quality</span>
+<span :style="styles[64]">assessment</span>
+<span :style="styles[65]">based</span>
+<span :style="styles[66]">term</span><span :style="styles[67]">.</span>
+<span :style="styles[68]">The</span>
+<span :style="styles[69]">model</span>
+<span :style="styles[70]">is</span>
+<span :style="styles[71]">then</span>
+<span :style="styles[72]">trained</span>
+<span :style="styles[73]">with</span>
+<span :style="styles[74]">Celeb</span><span :style="styles[75]">A</span>
+<span :style="styles[76]">under</span>
+<span :style="styles[77]">different</span>
+<span :style="styles[78]">parameters</span>
+<span :style="styles[79]">settings</span>
+<span :style="styles[80]">and</span>
+<span :style="styles[81]">results</span>
+<span :style="styles[82]">are</span>
+<span :style="styles[83]">analyzed</span><span :style="styles[84]">.</span>
+<span :style="styles[85]">&lt;</span><span :style="styles[86]">se</span><span :style="styles[87]">p</span><span :style="styles[88]">&gt;</span>
+</p><p>
+
+<span :style="styles[89]">Quality</span>
+<span :style="styles[90]">and</span>
+<span :style="styles[91]">significance</span><span :style="styles[92]">:</span>
+<span :style="styles[93]">&lt;</span><span :style="styles[94]">se</span><span :style="styles[95]">p</span><span :style="styles[96]">&gt;</span>
+</p><p>
+
+<span :style="styles[97]">This</span>
+<span :style="styles[98]">is</span>
+<span :style="styles[99]">quite</span>
+<span :style="styles[100]">a</span>
+<span :style="styles[101]">technical</span>
+<span :style="styles[102]">paper</span><span :style="styles[103]">,</span>
+<span :style="styles[104]">written</span>
+<span :style="styles[105]">in</span>
+<span :style="styles[106]">a</span>
+<span :style="styles[107]">very</span>
+<span :style="styles[108]">compressed</span>
+<span :style="styles[109]">form</span>
+<span :style="styles[110]">and</span>
+<span :style="styles[111]">is</span>
+<span :style="styles[112]">a</span>
+<span :style="styles[113]">bit</span>
+<span :style="styles[114]">hard</span>
+<span :style="styles[115]">to</span>
+<span :style="styles[116]">follow</span><span :style="styles[117]">.</span>
+<span :style="styles[118]">Mostly</span>
+<span :style="styles[119]">it</span>
+<span :style="styles[120]">is</span>
+<span :style="styles[121]">hard</span>
+<span :style="styles[122]">to</span>
+<span :style="styles[123]">estimate</span>
+<span :style="styles[124]">what</span>
+<span :style="styles[125]">is</span>
+<span :style="styles[126]">the</span>
+<span :style="styles[127]">contribution</span>
+<span :style="styles[128]">of</span>
+<span :style="styles[129]">the</span>
+<span :style="styles[130]">model</span>
+<span :style="styles[131]">and</span>
+<span :style="styles[132]">how</span>
+<span :style="styles[133]">the</span>
+<span :style="styles[134]">results</span>
+<span :style="styles[135]">differ</span>
+<span :style="styles[136]">from</span>
+<span :style="styles[137]">baseline</span>
+<span :style="styles[138]">models</span><span :style="styles[139]">.</span>
+<span :style="styles[140]">&lt;</span><span :style="styles[141]">se</span><span :style="styles[142]">p</span><span :style="styles[143]">&gt;</span>
+</p><p>
+
+<span :style="styles[144]">Cl</span><span :style="styles[145]">arity</span><span :style="styles[146]">:</span>
+<span :style="styles[147]">&lt;</span><span :style="styles[148]">se</span><span :style="styles[149]">p</span><span :style="styles[150]">&gt;</span>
+</p><p>
+
+<span :style="styles[151]">I</span>
+<span :style="styles[152]">would</span>
+<span :style="styles[153]">say</span>
+<span :style="styles[154]">this</span>
+<span :style="styles[155]">is</span>
+<span :style="styles[156]">one</span>
+<span :style="styles[157]">of</span>
+<span :style="styles[158]">the</span>
+<span :style="styles[159]">weak</span>
+<span :style="styles[160]">points</span>
+<span :style="styles[161]">of</span>
+<span :style="styles[162]">the</span>
+<span :style="styles[163]">paper</span>
+<span :style="styles[164]">-</span>
+<span :style="styles[165]">the</span>
+<span :style="styles[166]">paper</span>
+<span :style="styles[167]">is</span>
+<span :style="styles[168]">not</span>
+<span :style="styles[169]">well</span>
+<span :style="styles[170]">motivated</span>
+<span :style="styles[171]">and</span>
+<span :style="styles[172]">the</span>
+<span :style="styles[173]">results</span>
+<span :style="styles[174]">are</span>
+<span :style="styles[175]">not</span>
+<span :style="styles[176]">clearly</span>
+<span :style="styles[177]">presented</span><span :style="styles[178]">.</span>
+<span :style="styles[179]">&lt;</span><span :style="styles[180]">se</span><span :style="styles[181]">p</span><span :style="styles[182]">&gt;</span>
+</p><p>
+
+<span :style="styles[183]">Original</span><span :style="styles[184]">ity</span><span :style="styles[185]">:</span>
+<span :style="styles[186]">&lt;</span><span :style="styles[187]">se</span><span :style="styles[188]">p</span><span :style="styles[189]">&gt;</span>
+</p><p>
+
+<span :style="styles[190]">Seems</span>
+<span :style="styles[191]">original</span><span :style="styles[192]">.</span>
+<span :style="styles[193]">&lt;</span><span :style="styles[194]">se</span><span :style="styles[195]">p</span><span :style="styles[196]">&gt;</span>
+</p><p>
+
+<span :style="styles[197]">Pros</span><span :style="styles[198]">:</span>
+<span :style="styles[199]">&lt;</span><span :style="styles[200]">se</span><span :style="styles[201]">p</span><span :style="styles[202]">&gt;</span>
+</p><p>
+
+<span :style="styles[203]">*</span>
+<span :style="styles[204]">Interesting</span>
+<span :style="styles[205]">energy</span>
+<span :style="styles[206]">formulation</span>
+<span :style="styles[207]">and</span>
+<span :style="styles[208]">variation</span>
+<span :style="styles[209]">over</span>
+<span :style="styles[210]">B</span><span :style="styles[211]">EG</span><span :style="styles[212]">AN</span>
+<span :style="styles[213]">&lt;</span><span :style="styles[214]">se</span><span :style="styles[215]">p</span><span :style="styles[216]">&gt;</span>
+</p><p>
+
+<span :style="styles[217]">Cons</span><span :style="styles[218]">:</span>
+<span :style="styles[219]">&lt;</span><span :style="styles[220]">se</span><span :style="styles[221]">p</span><span :style="styles[222]">&gt;</span>
+</p><p>
+
+<span :style="styles[223]">*</span>
+<span :style="styles[224]">Not</span>
+<span :style="styles[225]">a</span>
+<span :style="styles[226]">clear</span>
+<span :style="styles[227]">paper</span>
+<span :style="styles[228]">&lt;</span><span :style="styles[229]">se</span><span :style="styles[230]">p</span><span :style="styles[231]">&gt;</span>
+</p><p>
+
+<span :style="styles[232]">*</span>
+<span :style="styles[233]">results</span>
+<span :style="styles[234]">are</span>
+<span :style="styles[235]">only</span>
+<span :style="styles[236]">partially</span>
+<span :style="styles[237]">motivated</span>
+<span :style="styles[238]">and</span>
+<span :style="styles[239]">analyzed</span>
+<span :style="styles[240]">&lt;</span><span :style="styles[241]">RE</span><span :style="styles[242]">V</span><span :style="styles[243]">BRE</span><span :style="styles[244]">AK</span><span :style="styles[245]">&gt;</span><hr/>
+<span :style="styles[246]">This</span>
+<span :style="styles[247]">paper</span>
+<span :style="styles[248]">proposed</span>
+<span :style="styles[249]">some</span>
+<span :style="styles[250]">new</span>
+<span :style="styles[251]">energy</span>
+<span :style="styles[252]">function</span>
+<span :style="styles[253]">in</span>
+<span :style="styles[254]">the</span>
+<span :style="styles[255]">B</span><span :style="styles[256]">EG</span><span :style="styles[257]">AN</span>
+<span :style="styles[258]">(</span><span :style="styles[259]">bound</span><span :style="styles[260]">ary</span>
+<span :style="styles[261]">equilibrium</span>
+<span :style="styles[262]">G</span><span :style="styles[263]">AN</span>
+<span :style="styles[264]">framework</span><span :style="styles[265]">),</span>
+<span :style="styles[266]">including</span>
+<span :style="styles[267]">l</span><span :style="styles[268]">_</span><span :style="styles[269]">1</span>
+<span :style="styles[270]">score</span><span :style="styles[271]">,</span>
+<span :style="styles[272]">Grad</span><span :style="styles[273]">ient</span>
+<span :style="styles[274]">magnitude</span>
+<span :style="styles[275]">similarity</span>
+<span :style="styles[276]">score</span><span :style="styles[277]">,</span>
+<span :style="styles[278]">and</span>
+<span :style="styles[279]">chrom</span><span :style="styles[280]">inance</span>
+<span :style="styles[281]">score</span><span :style="styles[282]">,</span>
+<span :style="styles[283]">which</span>
+<span :style="styles[284]">are</span>
+<span :style="styles[285]">motivated</span>
+<span :style="styles[286]">and</span>
+<span :style="styles[287]">borrowed</span>
+<span :style="styles[288]">from</span>
+<span :style="styles[289]">the</span>
+<span :style="styles[290]">image</span>
+<span :style="styles[291]">quality</span>
+<span :style="styles[292]">assessment</span>
+<span :style="styles[293]">techniques</span><span :style="styles[294]">.</span>
+<span :style="styles[295]">These</span>
+<span :style="styles[296]">energy</span>
+<span :style="styles[297]">component</span>
+<span :style="styles[298]">in</span>
+<span :style="styles[299]">the</span>
+<span :style="styles[300]">objective</span>
+<span :style="styles[301]">function</span>
+<span :style="styles[302]">allows</span>
+<span :style="styles[303]">learning</span>
+<span :style="styles[304]">of</span>
+<span :style="styles[305]">different</span>
+<span :style="styles[306]">set</span>
+<span :style="styles[307]">of</span>
+<span :style="styles[308]">features</span>
+<span :style="styles[309]">and</span>
+<span :style="styles[310]">determination</span>
+<span :style="styles[311]">on</span>
+<span :style="styles[312]">whether</span>
+<span :style="styles[313]">the</span>
+<span :style="styles[314]">features</span>
+<span :style="styles[315]">are</span>
+<span :style="styles[316]">adequately</span>
+<span :style="styles[317]">represented</span><span :style="styles[318]">.</span>
+<span :style="styles[319]">experiments</span>
+<span :style="styles[320]">on</span>
+<span :style="styles[321]">the</span>
+<span :style="styles[322]">using</span>
+<span :style="styles[323]">different</span>
+<span :style="styles[324]">hyper</span><span :style="styles[325]">-</span><span :style="styles[326]">param</span><span :style="styles[327]">eters</span>
+<span :style="styles[328]">of</span>
+<span :style="styles[329]">the</span>
+<span :style="styles[330]">energy</span>
+<span :style="styles[331]">function</span><span :style="styles[332]">,</span>
+<span :style="styles[333]">as</span>
+<span :style="styles[334]">well</span>
+<span :style="styles[335]">as</span>
+<span :style="styles[336]">visual</span>
+<span :style="styles[337]">inspections</span>
+<span :style="styles[338]">on</span>
+<span :style="styles[339]">the</span>
+<span :style="styles[340]">quality</span>
+<span :style="styles[341]">of</span>
+<span :style="styles[342]">the</span>
+<span :style="styles[343]">learned</span>
+<span :style="styles[344]">images</span><span :style="styles[345]">,</span>
+<span :style="styles[346]">are</span>
+<span :style="styles[347]">presented</span><span :style="styles[348]">.</span>
+<span :style="styles[349]">&lt;</span><span :style="styles[350]">se</span><span :style="styles[351]">p</span><span :style="styles[352]">&gt;</span>
+</p><p>
+
+<span :style="styles[353]">It</span>
+<span :style="styles[354]">appears</span>
+<span :style="styles[355]">to</span>
+<span :style="styles[356]">me</span>
+<span :style="styles[357]">that</span>
+<span :style="styles[358]">the</span>
+<span :style="styles[359]">novelty</span>
+<span :style="styles[360]">of</span>
+<span :style="styles[361]">the</span>
+<span :style="styles[362]">paper</span>
+<span :style="styles[363]">is</span>
+<span :style="styles[364]">limited</span><span :style="styles[365]">,</span>
+<span :style="styles[366]">in</span>
+<span :style="styles[367]">that</span>
+<span :style="styles[368]">the</span>
+<span :style="styles[369]">main</span>
+<span :style="styles[370]">approach</span>
+<span :style="styles[371]">is</span>
+<span :style="styles[372]">built</span>
+<span :style="styles[373]">on</span>
+<span :style="styles[374]">the</span>
+<span :style="styles[375]">existing</span>
+<span :style="styles[376]">B</span><span :style="styles[377]">EG</span><span :style="styles[378]">AN</span>
+<span :style="styles[379]">framework</span>
+<span :style="styles[380]">with</span>
+<span :style="styles[381]">certain</span>
+<span :style="styles[382]">modifications</span><span :style="styles[383]">.</span>
+<span :style="styles[384]">For</span>
+<span :style="styles[385]">example</span><span :style="styles[386]">,</span>
+<span :style="styles[387]">the</span>
+<span :style="styles[388]">new</span>
+<span :style="styles[389]">energy</span>
+<span :style="styles[390]">function</span>
+<span :style="styles[391]">in</span>
+<span :style="styles[392]">equation</span>
+<span :style="styles[393]">(</span><span :style="styles[394]">4</span><span :style="styles[395]">)</span>
+<span :style="styles[396]">larg</span><span :style="styles[397]">es</span>
+<span :style="styles[398]">achieves</span>
+<span :style="styles[399]">similar</span>
+<span :style="styles[400]">goal</span>
+<span :style="styles[401]">as</span>
+<span :style="styles[402]">the</span>
+<span :style="styles[403]">original</span>
+<span :style="styles[404]">energy</span>
+<span :style="styles[405]">(</span><span :style="styles[406]">1</span><span :style="styles[407]">)</span>
+<span :style="styles[408]">proposed</span>
+<span :style="styles[409]">by</span>
+<span :style="styles[410]">Zhao</span>
+<span :style="styles[411]">et</span><span :style="styles[412]">.</span>
+<span :style="styles[413]">al</span>
+<span :style="styles[414]">(</span><span :style="styles[415]">2016</span><span :style="styles[416]">),</span>
+<span :style="styles[417]">except</span>
+<span :style="styles[418]">that</span>
+<span :style="styles[419]">the</span>
+<span :style="styles[420]">margin</span>
+<span :style="styles[421]">loss</span>
+<span :style="styles[422]">in</span>
+<span :style="styles[423]">(</span><span :style="styles[424]">1</span><span :style="styles[425]">)</span>
+<span :style="styles[426]">is</span>
+<span :style="styles[427]">changed</span>
+<span :style="styles[428]">to</span>
+<span :style="styles[429]">a</span>
+<span :style="styles[430]">re</span><span :style="styles[431]">-</span><span :style="styles[432]">weight</span><span :style="styles[433]">ed</span>
+<span :style="styles[434]">linear</span>
+<span :style="styles[435]">loss</span><span :style="styles[436]">,</span>
+<span :style="styles[437]">where</span>
+<span :style="styles[438]">the</span>
+<span :style="styles[439]">dynamic</span>
+<span :style="styles[440]">weight</span><span :style="styles[441]">ing</span>
+<span :style="styles[442]">scheme</span>
+<span :style="styles[443]">of</span>
+<span :style="styles[444]">k</span><span :style="styles[445]">_</span><span :style="styles[446]">t</span>
+<span :style="styles[447]">is</span>
+<span :style="styles[448]">borrowed</span>
+<span :style="styles[450]">from</span>
+<span :style="styles[451]">the</span>
+<span :style="styles[452]">work</span>
+<span :style="styles[453]">of</span>
+<span :style="styles[454]">Bert</span><span :style="styles[455]">hel</span><span :style="styles[456]">ot</span>
+<span :style="styles[457]">et</span><span :style="styles[458]">.</span>
+<span :style="styles[459]">al</span>
+<span :style="styles[460]">(</span><span :style="styles[461]">2017</span><span :style="styles[462]">).</span>
+<span :style="styles[463]">It</span>
+<span :style="styles[464]">is</span>
+<span :style="styles[465]">not</span>
+<span :style="styles[466]">very</span>
+<span :style="styles[467]">clear</span>
+<span :style="styles[468]">why</span>
+<span :style="styles[469]">making</span>
+<span :style="styles[470]">such</span>
+<span :style="styles[471]">changes</span>
+<span :style="styles[472]">in</span>
+<span :style="styles[473]">the</span>
+<span :style="styles[474]">energy</span>
+<span :style="styles[475]">would</span>
+<span :style="styles[476]">supposedly</span>
+<span :style="styles[477]">make</span>
+<span :style="styles[478]">the</span>
+<span :style="styles[479]">results</span>
+<span :style="styles[480]">better</span><span :style="styles[481]">,</span>
+<span :style="styles[482]">and</span>
+<span :style="styles[483]">no</span>
+<span :style="styles[484]">further</span>
+<span :style="styles[485]">discussions</span>
+<span :style="styles[486]">are</span>
+<span :style="styles[487]">provided</span><span :style="styles[488]">.</span>
+<span :style="styles[490]">On</span>
+<span :style="styles[491]">the</span>
+<span :style="styles[492]">other</span>
+<span :style="styles[493]">hand</span><span :style="styles[494]">,</span>
+<span :style="styles[495]">the</span>
+<span :style="styles[496]">several</span>
+<span :style="styles[497]">energy</span>
+<span :style="styles[498]">component</span>
+<span :style="styles[499]">introduced</span>
+<span :style="styles[500]">are</span>
+<span :style="styles[501]">simply</span>
+<span :style="styles[502]">choices</span>
+<span :style="styles[503]">of</span>
+<span :style="styles[504]">the</span>
+<span :style="styles[505]">similarity</span>
+<span :style="styles[506]">measures</span>
+<span :style="styles[507]">as</span>
+<span :style="styles[508]">motivated</span>
+<span :style="styles[509]">from</span>
+<span :style="styles[510]">the</span>
+<span :style="styles[511]">image</span>
+<span :style="styles[512]">quality</span>
+<span :style="styles[513]">assessment</span><span :style="styles[514]">,</span>
+<span :style="styles[515]">and</span>
+<span :style="styles[516]">there</span>
+<span :style="styles[517]">are</span>
+<span :style="styles[518]">probably</span>
+<span :style="styles[519]">a</span>
+<span :style="styles[520]">lot</span>
+<span :style="styles[521]">more</span>
+<span :style="styles[522]">in</span>
+<span :style="styles[523]">the</span>
+<span :style="styles[524]">literature</span>
+<span :style="styles[525]">whose</span>
+<span :style="styles[526]">application</span>
+<span :style="styles[527]">can</span>
+<span :style="styles[528]">not</span>
+<span :style="styles[529]">be</span>
+<span :style="styles[530]">deemed</span>
+<span :style="styles[531]">as</span>
+<span :style="styles[532]">a</span>
+<span :style="styles[533]">significant</span>
+<span :style="styles[534]">contribution</span>
+<span :style="styles[535]">to</span>
+<span :style="styles[536]">either</span>
+<span :style="styles[537]">theories</span>
+<span :style="styles[538]">or</span>
+<span :style="styles[539]">algorithm</span>
+<span :style="styles[540]">designs</span>
+<span :style="styles[541]">in</span>
+<span :style="styles[542]">G</span><span :style="styles[543]">AN</span><span :style="styles[544]">.</span>
+<span :style="styles[545]">&lt;</span><span :style="styles[546]">se</span><span :style="styles[547]">p</span><span :style="styles[548]">&gt;</span>
+</p><p>
+
+<span :style="styles[549]">Many</span>
+<span :style="styles[550]">results</span>
+<span :style="styles[551]">from</span>
+<span :style="styles[552]">the</span>
+<span :style="styles[553]">experimental</span>
+<span :style="styles[554]">section</span>
+<span :style="styles[555]">rely</span>
+<span :style="styles[556]">on</span>
+<span :style="styles[557]">visual</span>
+<span :style="styles[558]">evaluations</span><span :style="styles[559]">,</span>
+<span :style="styles[560]">such</span>
+<span :style="styles[561]">as</span>
+<span :style="styles[562]">in</span>
+<span :style="styles[563]">Figure</span><span :style="styles[564]">~</span><span :style="styles[565]">4</span>
+<span :style="styles[566]">or</span>
+<span :style="styles[567]">5</span><span :style="styles[568]">;</span>
+<span :style="styles[569]">from</span>
+<span :style="styles[570]">these</span>
+<span :style="styles[571]">figures</span><span :style="styles[572]">,</span>
+<span :style="styles[573]">it</span>
+<span :style="styles[574]">is</span>
+<span :style="styles[575]">difficult</span>
+<span :style="styles[576]">to</span>
+<span :style="styles[577]">clearly</span>
+<span :style="styles[578]">pick</span>
+<span :style="styles[579]">out</span>
+<span :style="styles[580]">the</span>
+<span :style="styles[581]">winning</span>
+<span :style="styles[582]">images</span><span :style="styles[583]">.</span>
+<span :style="styles[584]">In</span>
+<span :style="styles[585]">Figure</span><span :style="styles[586]">~</span><span :style="styles[587]">5</span><span :style="styles[588]">,</span>
+<span :style="styles[589]">for</span>
+<span :style="styles[590]">a</span>
+<span :style="styles[591]">fair</span>
+<span :style="styles[593]">evaluation</span>
+<span :style="styles[594]">on</span>
+<span :style="styles[595]">the</span>
+<span :style="styles[596]">performance</span>
+<span :style="styles[597]">of</span>
+<span :style="styles[598]">model</span>
+<span :style="styles[599]">inter</span><span :style="styles[600]">pl</span><span :style="styles[601]">o</span><span :style="styles[602]">ations</span><span :style="styles[603]">,</span>
+<span :style="styles[604]">the</span>
+<span :style="styles[605]">same</span>
+<span :style="styles[606]">human</span>
+<span :style="styles[607]">model</span>
+<span :style="styles[608]">should</span>
+<span :style="styles[609]">be</span>
+<span :style="styles[610]">used</span>
+<span :style="styles[611]">for</span>
+<span :style="styles[612]">competing</span>
+<span :style="styles[613]">methods</span><span :style="styles[614]">,</span>
+<span :style="styles[615]">instead</span>
+<span :style="styles[616]">of</span>
+<span :style="styles[617]">applying</span>
+<span :style="styles[618]">different</span>
+<span :style="styles[619]">human</span>
+<span :style="styles[620]">models</span>
+<span :style="styles[621]">and</span>
+<span :style="styles[622]">different</span>
+<span :style="styles[623]">interpol</span><span :style="styles[624]">ation</span>
+<span :style="styles[625]">tasks</span>
+<span :style="styles[626]">in</span>
+<span :style="styles[627]">different</span>
+<span :style="styles[628]">methods</span><span :style="styles[629]">.</span>
+<span :style="styles[630]">&lt;</span><span :style="styles[631]">RE</span><span :style="styles[632]">V</span><span :style="styles[633]">BRE</span><span :style="styles[634]">AK</span><span :style="styles[635]">&gt;</span><hr/>
+<span :style="styles[636]">Summary</span><span :style="styles[637]">:</span>
+<span :style="styles[638]">&lt;</span><span :style="styles[639]">se</span><span :style="styles[640]">p</span><span :style="styles[641]">&gt;</span>
+</p><p>
+
+<span :style="styles[642]">The</span>
+<span :style="styles[643]">paper</span>
+<span :style="styles[644]">extends</span>
+<span :style="styles[645]">the</span>
+<span :style="styles[646]">the</span>
+<span :style="styles[647]">recently</span>
+<span :style="styles[648]">proposed</span>
+<span :style="styles[649]">Bound</span><span :style="styles[650]">ary</span>
+<span :style="styles[651]">Equ</span><span :style="styles[652]">ilibrium</span>
+<span :style="styles[653]">Gener</span><span :style="styles[654]">ative</span>
+<span :style="styles[655]">Ad</span><span :style="styles[656]">vers</span><span :style="styles[657]">arial</span>
+<span :style="styles[658]">Networks</span>
+<span :style="styles[659]">(</span><span :style="styles[660]">B</span><span :style="styles[661]">EG</span><span :style="styles[662]">AN</span><span :style="styles[663]">s</span><span :style="styles[664]">),</span>
+<span :style="styles[665]">with</span>
+<span :style="styles[666]">the</span>
+<span :style="styles[667]">hope</span>
+<span :style="styles[668]">of</span>
+<span :style="styles[669]">generating</span>
+<span :style="styles[670]">images</span>
+<span :style="styles[671]">which</span>
+<span :style="styles[672]">are</span>
+<span :style="styles[673]">more</span>
+<span :style="styles[674]">realistic</span><span :style="styles[675]">.</span>
+<span :style="styles[676]">In</span>
+<span :style="styles[677]">particular</span><span :style="styles[678]">,</span>
+<span :style="styles[679]">the</span>
+<span :style="styles[680]">authors</span>
+<span :style="styles[681]">propose</span>
+<span :style="styles[682]">to</span>
+<span :style="styles[683]">change</span>
+<span :style="styles[684]">the</span>
+<span :style="styles[685]">energy</span>
+<span :style="styles[686]">function</span>
+<span :style="styles[687]">associated</span>
+<span :style="styles[688]">with</span>
+<span :style="styles[689]">the</span>
+<span :style="styles[690]">auto</span><span :style="styles[691]">-</span><span :style="styles[692]">enc</span><span :style="styles[693]">oder</span><span :style="styles[694]">,</span>
+<span :style="styles[695]">from</span>
+<span :style="styles[696]">an</span>
+<span :style="styles[697]">L</span><span :style="styles[698]">2</span>
+<span :style="styles[699]">norm</span>
+<span :style="styles[700]">(</span><span :style="styles[701]">a</span>
+<span :style="styles[702]">single</span>
+<span :style="styles[703]">number</span><span :style="styles[704]">)</span>
+<span :style="styles[705]">to</span>
+<span :style="styles[706]">an</span>
+<span :style="styles[707]">energy</span>
+<span :style="styles[708]">function</span>
+<span :style="styles[709]">with</span>
+<span :style="styles[710]">multiple</span>
+<span :style="styles[711]">components</span><span :style="styles[712]">.</span>
+<span :style="styles[713]">Their</span>
+<span :style="styles[714]">energy</span>
+<span :style="styles[715]">function</span>
+<span :style="styles[716]">is</span>
+<span :style="styles[717]">inspired</span>
+<span :style="styles[718]">by</span>
+<span :style="styles[719]">the</span>
+<span :style="styles[720]">structured</span>
+<span :style="styles[721]">similarity</span>
+<span :style="styles[722]">index</span>
+<span :style="styles[723]">(</span><span :style="styles[724]">SS</span><span :style="styles[725]">IM</span><span :style="styles[726]">),</span>
+<span :style="styles[727]">and</span>
+<span :style="styles[728]">the</span>
+<span :style="styles[729]">three</span>
+<span :style="styles[730]">components</span>
+<span :style="styles[731]">they</span>
+<span :style="styles[732]">use</span>
+<span :style="styles[733]">are</span>
+<span :style="styles[734]">the</span>
+<span :style="styles[735]">L</span><span :style="styles[736]">1</span>
+<span :style="styles[737]">score</span><span :style="styles[738]">,</span>
+<span :style="styles[739]">the</span>
+<span :style="styles[740]">gradient</span>
+<span :style="styles[741]">magnitude</span>
+<span :style="styles[742]">similarity</span>
+<span :style="styles[743]">score</span><span :style="styles[744]">,</span>
+<span :style="styles[745]">and</span>
+<span :style="styles[746]">the</span>
+<span :style="styles[747]">chrom</span><span :style="styles[748]">ium</span>
+<span :style="styles[749]">score</span><span :style="styles[750]">.</span>
+<span :style="styles[751]">Using</span>
+<span :style="styles[752]">this</span>
+<span :style="styles[753]">energy</span>
+<span :style="styles[754]">function</span><span :style="styles[755]">,</span>
+<span :style="styles[756]">the</span>
+<span :style="styles[757]">authors</span>
+<span :style="styles[758]">hypothes</span><span :style="styles[759]">ize</span><span :style="styles[760]">,</span>
+<span :style="styles[761]">that</span>
+<span :style="styles[762]">it</span>
+<span :style="styles[763]">will</span>
+<span :style="styles[764]">force</span>
+<span :style="styles[765]">the</span>
+<span :style="styles[766]">generator</span>
+<span :style="styles[767]">to</span>
+<span :style="styles[768]">generate</span>
+<span :style="styles[769]">realistic</span>
+<span :style="styles[770]">images</span><span :style="styles[771]">.</span>
+<span :style="styles[772]">They</span>
+<span :style="styles[773]">test</span>
+<span :style="styles[774]">their</span>
+<span :style="styles[775]">hypothesis</span>
+<span :style="styles[776]">on</span>
+<span :style="styles[777]">a</span>
+<span :style="styles[778]">single</span>
+<span :style="styles[779]">dataset</span><span :style="styles[780]">,</span>
+<span :style="styles[781]">namely</span><span :style="styles[782]">,</span>
+<span :style="styles[783]">the</span>
+<span :style="styles[784]">Celeb</span><span :style="styles[785]">A</span>
+<span :style="styles[786]">dataset</span><span :style="styles[787]">.</span>
+<span :style="styles[788]">&lt;</span><span :style="styles[789]">se</span><span :style="styles[790]">p</span><span :style="styles[791]">&gt;</span>
+</p><p>
+
+<span :style="styles[792]">Review</span><span :style="styles[793]">:</span>
+<span :style="styles[794]">&lt;</span><span :style="styles[795]">se</span><span :style="styles[796]">p</span><span :style="styles[797]">&gt;</span>
+</p><p>
+
+<span :style="styles[798]">While</span>
+<span :style="styles[799]">the</span>
+<span :style="styles[800]">idea</span>
+<span :style="styles[801]">proposed</span>
+<span :style="styles[802]">in</span>
+<span :style="styles[803]">the</span>
+<span :style="styles[804]">paper</span>
+<span :style="styles[805]">is</span>
+<span :style="styles[806]">somewhat</span>
+<span :style="styles[807]">novel</span>
+<span :style="styles[808]">and</span>
+<span :style="styles[809]">there</span>
+<span :style="styles[810]">is</span>
+<span :style="styles[811]">nothing</span>
+<span :style="styles[812]">obviously</span>
+<span :style="styles[813]">wrong</span>
+<span :style="styles[814]">about</span>
+<span :style="styles[815]">the</span>
+<span :style="styles[816]">proposed</span>
+<span :style="styles[817]">approach</span><span :style="styles[818]">,</span>
+<span :style="styles[819]">I</span>
+<span :style="styles[820]">thought</span>
+<span :style="styles[821]">the</span>
+<span :style="styles[822]">paper</span>
+<span :style="styles[823]">is</span>
+<span :style="styles[824]">somewhat</span>
+<span :style="styles[825]">incremental</span><span :style="styles[826]">.</span>
+<span :style="styles[827]">As</span>
+<span :style="styles[828]">a</span>
+<span :style="styles[829]">result</span>
+<span :style="styles[830]">I</span>
+<span :style="styles[831]">kind</span>
+<span :style="styles[832]">of</span>
+<span :style="styles[833]">question</span>
+<span :style="styles[834]">the</span>
+<span :style="styles[835]">impact</span>
+<span :style="styles[836]">of</span>
+<span :style="styles[837]">this</span>
+<span :style="styles[838]">result</span><span :style="styles[839]">.</span>
+<span :style="styles[840]">My</span>
+<span :style="styles[841]">suspicion</span>
+<span :style="styles[842]">is</span>
+<span :style="styles[843]">reinforced</span>
+<span :style="styles[844]">by</span>
+<span :style="styles[845]">the</span>
+<span :style="styles[846]">fact</span>
+<span :style="styles[847]">that</span>
+<span :style="styles[848]">the</span>
+<span :style="styles[849]">experimental</span>
+<span :style="styles[850]">section</span>
+<span :style="styles[851]">is</span>
+<span :style="styles[852]">extremely</span>
+<span :style="styles[853]">weak</span><span :style="styles[854]">.</span>
+<span :style="styles[855]">In</span>
+<span :style="styles[856]">particular</span>
+<span :style="styles[857]">the</span>
+<span :style="styles[858]">authors</span>
+<span :style="styles[859]">test</span>
+<span :style="styles[860]">their</span>
+<span :style="styles[861]">model</span>
+<span :style="styles[862]">on</span>
+<span :style="styles[863]">a</span>
+<span :style="styles[864]">single</span>
+<span :style="styles[865]">relatively</span>
+<span :style="styles[866]">straightforward</span>
+<span :style="styles[867]">dataset</span><span :style="styles[868]">.</span>
+<span :style="styles[869]">Any</span>
+<span :style="styles[870]">reason</span>
+<span :style="styles[871]">why</span>
+<span :style="styles[872]">the</span>
+<span :style="styles[873]">authors</span>
+<span :style="styles[874]">did</span>
+<span :style="styles[875]">not</span>
+<span :style="styles[876]">try</span>
+<span :style="styles[877]">on</span>
+<span :style="styles[878]">other</span>
+<span :style="styles[879]">datasets</span>
+<span :style="styles[880]">involving</span>
+<span :style="styles[881]">natural</span>
+<span :style="styles[882]">images</span><span :style="styles[883]">?</span>
+<span :style="styles[884]">As</span>
+<span :style="styles[885]">a</span>
+<span :style="styles[886]">result</span>
+<span :style="styles[887]">I</span>
+<span :style="styles[888]">feel</span>
+<span :style="styles[889]">that</span>
+<span :style="styles[890]">the</span>
+<span :style="styles[891]">title</span>
+<span :style="styles[892]">and</span>
+<span :style="styles[893]">the</span>
+<span :style="styles[894]">claims</span>
+<span :style="styles[895]">in</span>
+<span :style="styles[896]">the</span>
+<span :style="styles[897]">paper</span>
+<span :style="styles[898]">are</span>
+<span :style="styles[899]">somewhat</span>
+<span :style="styles[900]">misleading</span>
+<span :style="styles[901]">and</span>
+<span :style="styles[902]">premature</span><span :style="styles[903]">:</span>
+<span :style="styles[904]">that</span>
+<span :style="styles[905]">the</span>
+<span :style="styles[906]">proposed</span>
+<span :style="styles[907]">techniques</span>
+<span :style="styles[908]">improves</span>
+<span :style="styles[909]">the</span>
+<span :style="styles[910]">training</span>
+<span :style="styles[911]">and</span>
+<span :style="styles[912]">evaluation</span>
+<span :style="styles[913]">of</span>
+<span :style="styles[914]">energy</span>
+<span :style="styles[915]">based</span>
+<span :style="styles[916]">g</span><span :style="styles[917]">ans</span><span :style="styles[918]">.</span>
+<span :style="styles[919]">&lt;</span><span :style="styles[920]">se</span><span :style="styles[921]">p</span><span :style="styles[922]">&gt;</span>
+</p><p>
+
+<span :style="styles[923]">Over</span>
+<span :style="styles[924]">all</span>
+<span :style="styles[925]">the</span>
+<span :style="styles[926]">paper</span>
+<span :style="styles[927]">is</span>
+<span :style="styles[928]">clearly</span>
+<span :style="styles[929]">written</span>
+<span :style="styles[930]">and</span>
+<span :style="styles[931]">easy</span>
+<span :style="styles[932]">to</span>
+<span :style="styles[933]">understand</span><span :style="styles[934]">.</span>
+<span :style="styles[935]">&lt;</span><span :style="styles[936]">se</span><span :style="styles[937]">p</span><span :style="styles[938]">&gt;</span>
+</p><p>
+
+<span :style="styles[939]">Based</span>
+<span :style="styles[940]">on</span>
+<span :style="styles[941]">its</span>
+<span :style="styles[942]">incremental</span>
+<span :style="styles[943]">nature</span>
+<span :style="styles[944]">and</span>
+<span :style="styles[945]">weak</span>
+<span :style="styles[946]">experiments</span><span :style="styles[947]">,</span>
+<span :style="styles[948]">I</span><span :style="styles[949]">&#x27;m</span>
+<span :style="styles[950]">on</span>
+<span :style="styles[951]">the</span>
+<span :style="styles[952]">margin</span>
+<span :style="styles[953]">with</span>
+<span :style="styles[954]">regards</span>
+<span :style="styles[955]">to</span>
+<span :style="styles[956]">its</span>
+<span :style="styles[957]">acceptance</span><span :style="styles[958]">.</span>
+<span :style="styles[959]">Happy</span>
+<span :style="styles[960]">to</span>
+<span :style="styles[961]">change</span>
+<span :style="styles[962]">my</span>
+<span :style="styles[963]">opinion</span>
+<span :style="styles[964]">if</span>
+<span :style="styles[965]">other</span>
+<span :style="styles[966]">reviewers</span>
+<span :style="styles[967]">strongly</span>
+<span :style="styles[968]">think</span>
+<span :style="styles[969]">otherwise</span>
+<span :style="styles[970]">with</span>
+<span :style="styles[971]">good</span>
+<span :style="styles[972]">reason</span>
+<span :style="styles[973]">and</span>
+<span :style="styles[974]">are</span>
+<span :style="styles[975]">convinced</span>
+<span :style="styles[976]">about</span>
+<span :style="styles[977]">its</span>
+<span :style="styles[978]">impact</span><span :style="styles[979]">.</span>
+        </p>
+      </div>
+      <footer>
+        <div class="container">
+          <h2>Summary</h2>
+          <p>
+            <!-- <span @click="onSelect(0)" :class="selected===0 && 'selected'"> The first sentence. </span> -->
+            <span @click="onSelect(0)" :class="selected==0 && 'selected'">All reviewers agree that the paper is not ready for publication at *CONF* in its current form.</span>
+<span @click="onSelect(1)" :class="selected==1 && 'selected'">&lt;sep&gt; The main concerns of the reviewers include lack of novelty, weak experimental validation, and lack of clear and convincing explanations of the results.</span>
+<span @click="onSelect(2)" :class="selected==2 && 'selected'">The AC has carefully read the reviews/comments/rebuttal and examined the paper.</span>
+<span @click="onSelect(3)" :class="selected==3 && 'selected'">After reading the author&#x27;s rebuttal/revision, the AC agrees with the reviewers&#x27; assessment and feels the paper does not meet the bar for acceptance at this time.</span>
+<span @click="onSelect(4)" :class="selected==4 && 'selected'">The authors are encouraged to resubmit to another venue after improving the paper according to the reviewer&#x27;s comments and resubmitting to one of the upcoming conferences.</span>
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script type="application/javascript">
+      // const data = [ [] ];
+      const data = [[23.77184295654297, 0.839601457118988, 0.2855955958366394, 1.0, 0.1932906210422516, 0.23222297430038452, 0.108057901263237, 0.16288137435913086, 0.06277245283126831, 0.13465796411037445, 0.03678600862622261, 0.067747563123703, 0.1021135151386261, 0.1101018637418747, 3.419034004211426, 8.630422592163086, 1.1365611553192139, 1.5198965072631836, 0.7906642556190491, 6.500840663909912, 2.8508501052856445, 5.0614776611328125, 9.572964668273926, 1.0830694437026978, 1.4720921516418457, 0.9578344821929932, 5.140118598937988, 3.1988654136657715, 3.202852249145508, 4.571820259094238, 1.150071620941162, 1.4927257299423218, 1.265126347541809, 11.786108016967773, 4.422408103942871, 0.20567794144153595, 0.23014268279075623, 0.20240527391433716, 0.14022371172904968, 0.242930606007576, 0.18546578288078308, 0.2152222990989685, 0.483028382062912, 1.4105048179626465, 0.40565091371536255, 0.10360489785671234, 0.3186303675174713, 0.08073343336582184, 0.14334586262702942, 0.10863146185874939, 0.09055128693580627, 0.19554156064987183, 0.10889571160078049, 0.06362055987119675, 0.11050201207399368, 0.3893856704235077, 0.11511467397212982, 0.11308757960796356, 0.06159255653619766, 0.1006997674703598, 0.060108594596385956, 0.0747581422328949, 0.11108310520648956, 0.06526394188404083, 0.0544455461204052, 0.04372720792889595, 0.07466059178113937, 4.4426140785217285, 0.22797489166259766, 0.06195112690329552, 0.09006106108427048, 0.06439732015132904, 0.07198270410299301, 0.07087849825620651, 0.4395967721939087, 0.060563936829566956, 0.13059845566749573, 0.06785814464092255, 0.06480132043361664, 0.04228638857603073, 0.09233585745096207, 0.0480404756963253, 0.08872658759355545, 0.056315552443265915, 4.435600757598877, 0.10867844521999359, 0.13835002481937408, 0.15851059556007385, 0.14736676216125488, 0.1027752161026001, 0.05338932201266289, 0.38091346621513367, 0.11706695705652237, 0.11707361042499542, 0.187554270029068, 0.1583099663257599, 0.16886448860168457, 0.3066841661930084, 0.14641647040843964, 0.09955248236656189, 0.0986078530550003, 0.254933625459671, 1.7428474426269531, 0.09667494893074036, 0.20810353755950928, 0.10794131457805634, 0.11456884443759918, 0.08268606662750244, 0.25821202993392944, 0.07208050042390823, 0.08492869138717651, 0.06573065370321274, 0.07670348882675171, 0.1251143366098404, 0.808996319770813, 0.6450721621513367, 1.0389986038208008, 4.438758850097656, 0.16957464814186096, 0.1048811674118042, 0.07349088042974472, 0.5023746490478516, 0.5913465023040771, 0.6415823698043823, 0.07129618525505066, 0.06844314932823181, 0.07713206112384796, 0.08199886977672577, 0.09643684327602386, 0.07307302206754684, 0.05639347434043884, 0.07104433327913284, 0.09748324751853943, 0.13598862290382385, 0.05716102942824364, 0.0659695416688919, 0.09142614156007767, 0.07686442136764526, 0.048634301871061325, 4.446775436401367, 0.09899929910898209, 0.11218484491109848, 0.13528868556022644, 0.1702604740858078, 0.09887786209583282, 0.16237744688987732, 0.14903831481933594, 0.14071331918239594, 0.12815290689468384, 0.11196698248386383, 0.1382012963294983, 0.15035322308540344, 0.05784151703119278, 0.06100213900208473, 0.10512400418519974, 0.14630605280399323, 0.11979159712791443, 0.12193432450294495, 0.09984453022480011, 0.1610482633113861, 0.11903935670852661, 0.1711895912885666, 0.07854604721069336, 1.0705440044403076, 0.12945134937763214, 0.18688923120498657, 0.7920314073562622, 0.0741453766822815, 0.061754144728183746, 0.07587285339832306, 0.22003303468227386, 0.08384889364242554, 0.08276627212762833, 0.07295843958854675, 0.059314072132110596, 0.04778563976287842, 0.09317968785762787, 0.09714926779270172, 4.438654899597168, 0.12821079790592194, 0.1304885447025299, 0.15710213780403137, 0.15905070304870605, 0.08167602121829987, 0.13431841135025024, 0.13473346829414368, 0.10744662582874298, 0.13280601799488068, 0.11284700036048889, 0.11617818474769592, 0.07211952656507492, 0.05660005286335945, 4.411791801452637, 0.12921889126300812, 0.14999660849571228, 0.14291056990623474, 0.13769157230854034, 0.1343555450439453, 0.1500360071659088, 0.146993950009346, 0.18007275462150574, 0.17718081176280975, 0.1801156848669052, 0.10450130701065063, 0.14789190888404846, 0.14852379262447357, 0.07148350775241852, 0.23702868819236755, 0.0988885760307312, 0.0654851645231247, 0.10457299649715424, 0.05218406394124031, 0.058162663131952286, 0.06878509372472763, 0.1524530053138733, 0.14522382616996765, 0.15160015225410461, 0.3146055340766907, 0.15396855771541595, 0.130730539560318, 0.11844399571418762, 0.10894779860973358, 0.12403915822505951, 0.0646514743566513, 0.26984256505966187, 0.10868895798921585, 0.24790839850902557, 1.2188739776611328, 0.07315774261951447, 0.12923379242420197, 0.1116730123758316, 0.1243826374411583, 0.07015248388051987, 0.18201106786727905, 0.08041469752788544, 0.12516912817955017, 0.08409050852060318, 0.07099823653697968, 0.05944012105464935, 0.07928062230348587, 0.05724496394395828, 0.12200018763542175, 0.21916523575782776, 0.1872715950012207, 0.15382444858551025, 0.17163433134555817, 0.6389106512069702, 1.6023378372192383, 1.143246054649353, 0.11824249476194382, 0.19341981410980225, 0.28172019124031067, 0.14542992413043976, 0.12557747960090637, 0.08464336395263672, 0.23126539587974548, 0.07767930626869202, 0.05136050283908844, 0.47642868757247925, 0.3524060845375061, 0.16449271142482758, 0.12722183763980865, 0.21010401844978333, 0.07569500058889389, 0.11868353933095932, 0.09587092697620392, 0.12672871351242065, 0.32682618498802185, 0.08030012995004654, 0.22201105952262878, 0.5590347051620483, 0.10565775632858276, 0.10429288446903229, 0.07342660427093506, 0.05869637802243233, 0.08721450716257095, 0.11584766209125519, 0.8758676052093506, 0.1197577565908432, 0.15287917852401733, 0.06886307895183563, 0.14436054229736328, 0.6031686067581177, 0.1085997223854065, 0.11950324475765228, 0.1180015355348587, 0.08190358430147171, 0.10784004628658295, 0.08248268067836761, 0.1576484590768814, 0.07758525013923645, 0.05244233459234238, 0.06364704668521881, 0.060964636504650116, 4.442635536193848, 0.32115766406059265, 0.05893944948911667, 0.07974916696548462, 0.20411911606788635, 0.15933358669281006, 0.05437774211168289, 0.153220996260643, 0.11480377614498138, 0.04609435796737671, 0.10879553854465485, 0.0580761693418026, 0.0339001789689064, 1.1794631481170654, 0.06647151708602905, 0.12295985221862793, 0.08396119624376297, 0.08177103847265244, 0.060347795486450195, 0.1448138952255249, 0.07736822962760925, 0.12895198166370392, 0.11844183504581451, 0.14038291573524475, 4.4426703453063965, 0.10616838186979294, 0.217515766620636, 0.06199154257774353, 0.11639909446239471, 0.07621913403272629, 0.047591209411621094, 1.3053648471832275, 0.0706341415643692, 0.07753559947013855, 0.08107873052358627, 0.05650215968489647, 0.05847945064306259, 0.0451054722070694, 0.7582640051841736, 0.04249757528305054, 0.04745128005743027, 0.07431372255086899, 0.07847710698843002, 0.07506957650184631, 0.05156484618782997, 0.05541064962744713, 0.048236146569252014, 0.06349527090787888, 0.06416879594326019, 0.04091209918260574, 0.0495462566614151, 0.05829627066850662, 0.06816980242729187, 0.114328533411026, 4.448217868804932, 0.09860730916261673, 0.11997998505830765, 0.11797669529914856, 0.1423422247171402, 0.09512899816036224, 0.06636637449264526, 0.06342285871505737, 0.3385004997253418, 0.08215446025133133, 0.106672003865242, 0.42146843671798706, 0.084153912961483, 0.08173863589763641, 0.9915297627449036, 0.0928625613451004, 0.28013360500335693, 0.13072142004966736, 0.08301675319671631, 0.10001049935817719, 0.1815192550420761, 0.061838019639253616, 0.06467103958129883, 0.08664117753505707, 0.060858115553855896, 0.06717705726623535, 0.06440728157758713, 0.06923045217990875, 0.2154349386692047, 0.09866851568222046, 0.05149704962968826, 0.07520055025815964, 0.568938136100769, 0.3474540114402771, 0.22287993133068085, 4.443648338317871, 0.2916657328605652, 0.126946821808815, 0.24139519035816193, 0.40186426043510437, 0.06594935804605484, 0.07893625646829605, 0.048144061118364334, 0.2384161651134491, 0.07329786568880081, 0.12746776640415192, 0.19390983879566193, 0.5455096960067749, 0.14397303760051727, 0.074581578373909, 0.2173227071762085, 0.09543895721435547, 0.08321152627468109, 0.13693460822105408, 0.13295070827007294, 0.06621899455785751, 0.06866443157196045, 0.46840059757232666, 0.13695169985294342, 0.18263226747512817, 0.106325164437294, 0.10594672709703445, 0.5184659957885742, 0.166472390294075, 4.405993461608887, 0.11113271862268448, 0.09762658178806305, 0.12754440307617188, 0.40206435322761536, 0.18602344393730164, 0.30751538276672363, 0.2801055312156677, 0.10288198292255402, 0.07057187706232071, 0.2804977297782898, 0.12959088385105133, 0.20485323667526245, 0.1483663022518158, 0.4113866686820984, 0.12554986774921417, 0.13552358746528625, 0.2033982276916504, 0.07122325152158737, 1.6816143989562988, 0.0884164422750473, 0.10056061297655106, 0.0954241007566452, 0.0827791690826416, 0.35926294326782227, 0.22474537789821625, 0.5745110511779785, 0.11079275608062744, 0.08883699029684067, 0.14398416876792908, 0.10455603152513504, 0.267413467168808, 0.06137886643409729, 0.041951362043619156, 0.053430765867233276, 0.36705729365348816, 0.124224953353405, 0.03117644414305687, 0.11895044147968292, 0.03893963247537613, 0.05451095476746559, 0.09094636142253876, 0.2402103692293167, 0.07005154341459274, 0.07173368334770203, 0.17975512146949768, 4.3999810218811035, 0.09293410181999207, 0.07436931878328323, 0.10683092474937439, 0.11279026418924332, 0.2352457344532013, 0.08186608552932739, 0.18549516797065735, 0.08109526336193085, 0.07221900671720505, 0.0634160116314888, 0.07335489988327026, 0.06452304124832153, 0.13184472918510437, 0.13135793805122375, 0.05027198791503906, 0.08071793615818024, 0.119746133685112, 0.08438251167535782, 0.05125012621283531, 0.10297603160142899, 0.06363198161125183, 0.07180634886026382, 0.6660880446434021, 0.07245840132236481, 0.06389131397008896, 0.10073486715555191, 0.08361757546663284, 0.0831160694360733, 0.07112996280193329, 4.440924167633057, 0.0789807140827179, 0.34015965461730957, 0.5317370891571045, 0.19016820192337036, 0.140762597322464, 0.4024001657962799, 0.3211955428123474, 0.0757293626666069, 0.06704754382371902, 0.05498689413070679, 0.07989030331373215, 0.20250289142131805, 0.06246168538928032, 0.07310080528259277, 0.11179783940315247, 0.064120814204216, 0.09332991391420364, 0.05266358330845833, 0.10507507622241974, 0.07540702074766159, 0.07237948477268219, 0.04623352363705635, 0.06153612956404686, 0.04507254809141159, 0.05566524341702461, 0.7352710366249084, 0.08304989337921143, 0.07659386098384857, 0.056167297065258026, 0.057987574487924576, 0.06596636772155762, 0.058311719447374344, 0.05016535893082619, 0.11085942387580872, 0.06166364252567291, 0.07568179070949554, 0.05985989049077034, 0.08413206785917282, 0.04329743608832359, 0.043472543358802795, 0.04804837331175804, 0.04237525910139084, 0.058308396488428116, 0.05546780675649643, 1.8201053142547607, 0.09745113551616669, 0.07830606400966644, 0.06500498950481415, 0.08665462583303452, 0.061109960079193115, 0.07910628616809845, 0.10510273277759552, 0.07424692809581757, 0.2446012645959854, 0.07489266991615295, 4.441000938415527, 0.12512321770191193, 0.10883442312479019, 0.10168357193470001, 0.10216818004846573, 0.11476296186447144, 0.08087760955095291, 0.1487199366092682, 0.1698661744594574, 0.09894644469022751, 0.06316755712032318, 0.07291505485773087, 0.06849931925535202, 0.09517738223075867, 0.08379720151424408, 0.482779324054718, 0.03402434289455414, 0.13499608635902405, 0.23064234852790833, 0.08087566494941711, 0.06262293457984924, 0.21101021766662598, 0.21238894760608673, 0.36223047971725464, 0.06346230953931808, 0.12032508850097656, 0.09770935028791428, 0.12837548553943634, 0.19621138274669647, 0.13817325234413147, 0.14266954362392426, 0.33738207817077637, 0.2959893047809601, 0.0635068267583847, 0.29675090312957764, 0.07086063921451569, 0.11257345974445343, 0.04892726242542267, 0.062265314161777496, 4.456310272216797, 0.571372389793396, 0.09849338978528976, 0.057192251086235046, 0.5124193429946899, 0.8825399279594421, 0.1833776831626892, 0.1293950378894806, 0.05204375460743904, 0.035973746329545975, 0.05541457235813141, 0.11398328095674515, 0.049480877816677094, 0.0489729568362236, 0.25621891021728516, 0.0672433078289032, 0.10922066867351532, 0.14013949036598206, 0.07632924616336823, 0.11627912521362305, 0.2857774496078491, 0.26346850395202637, 0.0689072236418724, 0.06431693583726883, 0.05003592371940613, 0.04264454171061516, 0.11758106201887131, 0.09002767503261566, 0.07089035212993622, 0.059071071445941925, 0.03278322517871857, 0.4446203112602234, 0.05751829221844673, 0.11571118235588074, 0.059019651263952255, 0.06699080765247345, 0.05540774017572403, 0.04789942502975464, 0.14730308949947357, 0.0701998770236969, 0.06418131291866302, 0.09129627048969269, 0.04220760986208916, 0.17903099954128265, 0.06198883429169655, 0.03281261399388313, 4.449387550354004, 0.13208641111850739, 0.10886230319738388, 0.18649621307849884, 0.17054393887519836, 0.19051358103752136, 0.20498895645141602, 0.2499590814113617, 0.18870392441749573, 0.13119754195213318, 0.28252166509628296, 0.13501928746700287, 0.13982096314430237, 0.908153772354126, 4.880985260009766, 2.09768009185791, 0.09276171028614044, 0.13344436883926392, 0.23739926517009735, 0.10617238283157349, 0.7468706369400024, 0.22794729471206665, 0.09238842129707336, 0.09315144270658493, 0.1420310139656067, 0.08283482491970062, 0.09187248349189758, 0.16607142984867096, 0.09145406633615494, 0.10616755485534668, 0.18289417028427124, 0.13325290381908417, 0.08923182636499405, 0.050299786031246185, 0.07651001960039139, 0.5209718346595764, 1.1319798231124878, 0.18586258590221405, 0.09395855665206909, 0.1120527982711792, 0.09691263735294342, 0.18028660118579865, 0.05547180399298668, 0.1092904582619667, 0.09724520146846771, 0.13487088680267334, 4.440126419067383, 0.5208644270896912, 0.158649280667305, 0.41353940963745117, 0.2736320197582245, 0.07295843958854675, 0.13153384625911713, 0.28533291816711426, 0.12768304347991943, 0.12603497505187988, 0.09989017993211746, 0.08004765212535858, 0.06869345903396606, 0.12928371131420135, 0.12972241640090942, 0.06762858480215073, 0.7853493690490723, 0.05940534919500351, 0.07841800153255463, 0.22209298610687256, 0.20246148109436035, 0.1633445918560028, 0.20302283763885498, 0.5837270021438599, 0.07681823521852493, 0.17899367213249207, 0.34958982467651367, 0.08414439111948013, 0.3325384557247162, 0.10110920667648315, 0.15750668942928314, 0.1731877475976944, 0.07252984493970871, 0.050228916108608246, 0.09521439671516418, 0.15261316299438477, 0.08694411814212799, 4.435118198394775, 0.25656500458717346, 0.060846202075481415, 0.04868502914905548, 0.5978344082832336, 0.1467151939868927, 0.19222664833068848, 0.1121588796377182, 0.10997781902551651, 0.10624724626541138, 0.06351076811552048, 0.19585813581943512, 0.1186407133936882, 0.08680206537246704, 0.5887483358383179, 0.532913088798523, 1.7882245779037476, 0.07921620458364487, 0.10631770640611649, 0.06403818726539612, 0.09085602313280106, 0.18307363986968994, 0.2572619318962097, 0.19066007435321808, 0.3134557604789734, 0.16682381927967072, 0.05567649379372597, 0.12077531218528748, 0.05505144223570824, 0.05368109047412872, 0.06541707366704941, 0.1257227063179016, 1.0421644449234009, 0.06408947706222534, 0.07536676526069641, 0.11511984467506409, 0.06357640027999878, 0.07257917523384094, 4.426391124725342, 0.1730773150920868, 0.10090717673301697, 0.07553576678037643, 0.03986760973930359, 0.28038662672042847, 0.5233622193336487, 0.04980935901403427, 0.054171375930309296, 0.07593686878681183, 0.060778550803661346, 0.07981324940919876, 0.061093106865882874, 0.062044933438301086, 0.09114611893892288, 0.0708647221326828, 0.07917618006467819, 0.07451065629720688, 0.07106051594018936, 0.08330395072698593, 0.09865156561136246, 4.440130233764648, 0.10256122052669525, 0.06349567323923111, 0.1082068532705307, 0.055045340210199356, 0.06264019757509232, 0.06028243154287338, 0.06670334935188293, 0.0675542950630188, 0.47588440775871277, 0.0747402161359787, 0.08022752404212952, 0.0844169557094574, 0.5960656404495239, 0.08876877278089523, 0.10853621363639832, 4.424561023712158, 0.09199672937393188, 0.11684627830982208, 0.1013568565249443, 0.11448919773101807, 0.5148872137069702, 0.11235591769218445, 0.11513900756835938, 0.18191614747047424, 0.11203981935977936, 0.11781705915927887, 0.12475605309009552, 0.07976925373077393, 0.1515377312898636, 0.10467994213104248, 0.10766487568616867, 0.5329911708831787, 1.3177270889282227, 0.06346945464611053, 0.07923782616853714, 0.0939742848277092, 0.05407164990901947, 0.05938952416181564, 0.060029491782188416, 0.050745878368616104, 0.054869696497917175, 0.06111638993024826, 0.18795615434646606, 0.08145754039287567, 0.08019648492336273, 0.056303590536117554, 0.09498077630996704, 0.13035225868225098, 0.2807786464691162, 0.224630206823349, 1.1287785768508911, 0.2196216732263565, 0.15433776378631592, 0.5027812123298645, 4.381311416625977, 0.1591903567314148, 0.13905057311058044, 0.07208552211523056, 0.1601552665233612, 0.2807177007198334, 0.9489651918411255, 0.5453476905822754, 0.0604202076792717, 0.3105044662952423, 0.08579384535551071, 0.07968269288539886, 0.16153433918952942, 4.423420429229736, 0.09310606122016907, 1.7216289043426514, 0.08066724985837936, 0.09721899032592773, 0.09106245636940002, 0.09272155165672302, 0.05433804169297218, 0.06315770745277405, 0.1395660787820816, 0.23786523938179016, 0.09023825824260712, 0.1075250580906868, 0.3334064185619354, 0.19367434084415436, 4.43326473236084, 0.3264535665512085, 0.08555761724710464, 0.3854708969593048, 0.0465165413916111, 0.06558320671319962, 0.10811852663755417, 0.06599515676498413, 0.06386075913906097, 0.050883904099464417, 0.06508886814117432, 0.05490590259432793, 0.0827992856502533, 0.06267079710960388, 4.417262077331543, 0.08301225304603577, 0.05072861164808273, 0.06769857555627823, 0.13940198719501495, 0.06805524975061417, 0.06562408804893494, 0.07563623785972595, 0.06639362126588821, 0.0846032202243805, 0.08343414962291718, 0.047850728034973145, 0.05962225794792175, 0.07823535799980164, 0.07240903377532959, 0.07336854189634323, 0.119295135140419, 0.12616464495658875, 0.056006867438554764, 0.09603453427553177, 0.30762651562690735, 0.09469117969274521, 0.08926112204790115, 0.2598554193973541, 0.07560352981090546, 0.06778289377689362, 0.07533612847328186, 0.09975029528141022, 0.06855447590351105, 0.9616848230361938, 0.03958228603005409, 0.0902143269777298, 0.1173502653837204, 0.07088616490364075, 0.1572323888540268, 0.08022335171699524, 0.06477080285549164, 0.07097117602825165, 0.07825224101543427, 0.07175986468791962, 0.062289923429489136, 0.18000322580337524, 0.09922325611114502, 0.07820018380880356, 0.09045697748661041, 0.1109095960855484, 0.19473299384117126, 0.059669144451618195, 0.11842097342014313, 0.062458720058202744, 4.4059672355651855, 0.10883284360170364, 0.14364653825759888, 0.11456432938575745, 0.11770410090684891, 0.14145323634147644, 0.11056793481111526, 0.13708622753620148, 0.8820099234580994, 0.10161207616329193, 0.1740112006664276, 0.10286503285169601, 0.17133818566799164, 0.12878625094890594, 0.13855789601802826, 0.21321557462215424, 4.411882400512695, 0.07638265937566757, 0.08819688856601715, 0.07517419755458832, 0.08903482556343079, 0.1843387335538864, 0.0649077445268631, 0.07926750928163528, 0.24820077419281006, 0.11005815118551254, 0.0817444697022438, 0.2702100872993469, 0.09339552372694016, 0.1255173683166504, 0.25173699855804443, 0.25646349787712097, 0.08146953582763672, 0.08244601637125015, 0.19033658504486084, 0.5693806409835815, 0.10192164033651352, 0.12170229852199554, 0.06974247097969055, 0.7500761151313782, 4.417215347290039, 0.1435038298368454, 0.11098513007164001, 0.0733017697930336, 0.41330912709236145, 0.6487671732902527, 0.05947749316692352, 0.12780223786830902, 1.0068496465682983, 1.2979183197021484, 0.29474905133247375, 0.07406631857156754, 0.2103348672389984, 0.07406077533960342, 0.07035185396671295, 0.08280166983604431, 0.04409080371260643, 0.3530864715576172, 0.07439541071653366, 0.08296779543161392, 0.09857627749443054, 4.42346715927124, 7.732802867889404, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [22.56894302368164, 0.11089492589235306, 0.02933950163424015, 0.09664975106716156, 0.07437530905008316, 0.6943684220314026, 0.1754073053598404, 1.0, 0.14702095091342926, 0.28059160709381104, 0.04126995801925659, 0.07190097123384476, 0.14621558785438538, 0.08484093099832535, 2.370375156402588, 2.1894545555114746, 0.39491385221481323, 0.15176749229431152, 0.20922152698040009, 0.5219930410385132, 0.3659236431121826, 3.248015880584717, 4.572908401489258, 0.5491280555725098, 0.14735449850559235, 0.12541398406028748, 0.5389816761016846, 0.9013705849647522, 2.0844647884368896, 10.933183670043945, 1.0161679983139038, 0.8129315376281738, 0.7029745578765869, 2.3694236278533936, 4.579486846923828, 0.170169398188591, 0.11866205930709839, 0.04214458540081978, 0.04755321145057678, 0.043862152844667435, 0.00930309109389782, 0.011905649676918983, 0.09485602378845215, 0.47299909591674805, 0.07806592434644699, 0.0475129634141922, 0.2735247015953064, 0.10315588116645813, 0.20225989818572998, 0.07597029209136963, 0.12236327677965164, 0.16281048953533173, 0.2283872663974762, 0.09221231937408447, 0.09862778335809708, 0.035132862627506256, 0.07332691550254822, 0.02923595905303955, 0.05872788280248642, 0.027207687497138977, 0.036016494035720825, 0.04321353882551193, 0.0782991424202919, 0.05657658725976944, 0.05526534467935562, 0.06305993348360062, 0.12264912575483322, 4.601624488830566, 0.19009137153625488, 0.07940475642681122, 0.10949700325727463, 0.058062247931957245, 0.08030489087104797, 0.07181593775749207, 0.4947476387023926, 0.07924824953079224, 0.033237263560295105, 0.049537912011146545, 0.04367765039205551, 0.06763216108083725, 0.0432208850979805, 0.0886181965470314, 0.14289143681526184, 0.22647345066070557, 4.593754768371582, 0.11329769343137741, 0.02938828431069851, 0.00912570208311081, 0.010102160274982452, 0.058489829301834106, 0.07314268499612808, 0.04286668822169304, 0.03759296238422394, 0.0367208831012249, 0.042984284460544586, 0.01037469319999218, 0.010495791211724281, 0.17337451875209808, 0.13400796055793762, 0.08392748236656189, 0.1739061325788498, 0.4600370228290558, 1.047001838684082, 0.10712845623493195, 2.4412126541137695, 0.3000295162200928, 0.12923872470855713, 0.12836997210979462, 1.1226633787155151, 0.43291765451431274, 0.1412096470594406, 0.12444932013750076, 0.06013263389468193, 0.08668224513530731, 0.9270203709602356, 0.29658985137939453, 0.9647532105445862, 4.597269058227539, 0.2696990966796875, 0.05678706243634224, 0.09184585511684418, 0.3014329671859741, 0.29059141874313354, 0.14761970937252045, 0.17771244049072266, 0.06037842854857445, 0.07247734069824219, 0.15259575843811035, 0.0621032640337944, 0.171971395611763, 0.1531655490398407, 0.07315495610237122, 0.04430747404694557, 0.06884114444255829, 0.09818272292613983, 0.05030132830142975, 0.06916739046573639, 0.13264989852905273, 0.06299853324890137, 4.60628604888916, 0.2850313186645508, 0.04303009435534477, 0.009427460841834545, 0.010955662466585636, 0.07817502319812775, 2.7312493324279785, 0.03730345889925957, 0.04639061540365219, 0.09980611503124237, 0.02264699526131153, 0.011664234101772308, 0.0857989564538002, 0.07394186407327652, 0.2815392017364502, 0.26260554790496826, 0.18027445673942566, 0.455809623003006, 0.22588825225830078, 0.09994260966777802, 0.925240159034729, 0.7621665000915527, 1.5651315450668335, 0.1703384965658188, 1.6693557500839233, 0.36429065465927124, 0.7695401906967163, 1.307350516319275, 0.9299641847610474, 0.5212482213973999, 0.30150067806243896, 1.48994779586792, 0.31973719596862793, 0.5037851929664612, 0.6486526131629944, 0.8848140835762024, 0.23516163229942322, 0.8101160526275635, 0.2906895875930786, 4.59714937210083, 0.13660944998264313, 0.05539325997233391, 0.010351553559303284, 0.008207954466342926, 0.0977274551987648, 0.0363779179751873, 0.018067076802253723, 0.018250685185194016, 0.048018135130405426, 0.011945748701691628, 0.007712657563388348, 0.11031340062618256, 0.09902768582105637, 4.567785263061523, 0.09757184982299805, 0.04240044206380844, 0.011027161963284016, 0.009798065759241581, 0.29637348651885986, 0.09799028933048248, 0.0273663979023695, 0.03810354322195053, 0.007960288785398006, 0.005741694010794163, 0.031035173684358597, 0.36429959535598755, 0.26186686754226685, 0.08643263578414917, 0.023643270134925842, 0.07243898510932922, 0.026049992069602013, 0.32575464248657227, 0.15285718441009521, 0.08306430280208588, 0.03229222074151039, 0.023107673972845078, 0.0068717412650585175, 0.006784413009881973, 0.3106880486011505, 0.06624513864517212, 0.04409351944923401, 0.05888701230287552, 0.014161628670990467, 0.007806430570781231, 0.07917118072509766, 0.5793215036392212, 0.1600121557712555, 3.06266450881958, 1.7760730981826782, 0.08625365048646927, 0.02386416122317314, 0.007680521812289953, 0.006887254770845175, 0.13860931992530823, 0.9999202489852905, 2.095893383026123, 1.2869172096252441, 2.483266830444336, 0.7973544001579285, 0.5667735934257507, 0.7829844951629639, 0.07969985157251358, 0.01528015173971653, 0.004715148359537125, 0.006922432221472263, 0.007262506987899542, 0.02000526525080204, 0.15569350123405457, 0.6309283971786499, 0.09583888947963715, 0.08077157288789749, 0.14453917741775513, 0.36634665727615356, 0.12338536977767944, 0.08050430566072464, 0.08224686980247498, 0.19236284494400024, 0.21686790883541107, 0.05936572328209877, 0.04547629877924919, 0.2000986635684967, 0.017260992899537086, 0.0677080899477005, 0.1857723444700241, 0.09749820083379745, 0.1650315374135971, 0.04457474499940872, 0.07478762418031693, 0.3203654885292053, 0.050799619406461716, 0.07267526537179947, 0.03647870570421219, 0.0405314676463604, 0.05085991695523262, 0.007852897047996521, 0.012974018231034279, 0.022929349914193153, 0.020008454099297523, 0.14854592084884644, 0.038029350340366364, 0.227774515748024, 0.05764827877283096, 0.03426831215620041, 0.3332291543483734, 0.05475900322198868, 0.11258365213871002, 0.021655265241861343, 0.02180454134941101, 0.037575554102659225, 0.04520978406071663, 0.1363978087902069, 0.08189602196216583, 0.03503359481692314, 0.026963582262396812, 0.0315193347632885, 4.601631164550781, 0.09257334470748901, 0.05646670609712601, 0.014923252165317535, 0.011206917464733124, 0.019553394988179207, 0.06756400316953659, 0.030401453375816345, 0.015168024227023125, 0.02046174556016922, 0.005536782089620829, 0.007344916462898254, 0.011639434844255447, 0.12403751909732819, 0.022564608603715897, 0.012812281027436256, 0.029913373291492462, 0.016784299165010452, 0.021588532254099846, 0.012809580191969872, 0.03223729878664017, 0.5218839645385742, 0.024219520390033722, 0.021282605826854706, 4.601685047149658, 1.9855647087097168, 0.04672743380069733, 0.019346844404935837, 0.06717602163553238, 0.0843210443854332, 0.0633080005645752, 0.14956307411193848, 0.024422381073236465, 0.01616644114255905, 0.03858673572540283, 0.06812632828950882, 0.12300608307123184, 0.02723279595375061, 0.3130628168582916, 0.04179845377802849, 0.19280430674552917, 0.059315331280231476, 0.057595595717430115, 0.07276903092861176, 0.027548646554350853, 0.10504854470491409, 0.08072350174188614, 0.024063024669885635, 0.10668270289897919, 0.04684297740459442, 0.04566497728228569, 0.022564880549907684, 0.16044498980045319, 0.08135256171226501, 4.607937335968018, 0.21484817564487457, 0.022142037749290466, 0.007055122405290604, 0.009093868546187878, 0.10371028631925583, 0.08758585900068283, 0.13967880606651306, 0.6762163639068604, 0.929980456829071, 1.4153990745544434, 5.344017028808594, 0.5569747686386108, 0.1346500962972641, 0.8589664697647095, 0.2322528213262558, 0.3219921290874481, 0.4263988137245178, 0.02853061631321907, 0.08379922062158585, 0.2749664783477783, 0.43712958693504333, 0.07423185557126999, 0.1445561945438385, 0.0744469091296196, 0.17633408308029175, 0.16936691105365753, 0.07325495779514313, 0.20690397918224335, 0.3849014937877655, 0.0700753852725029, 0.22087743878364563, 0.1949566900730133, 0.03279438987374306, 0.14500762522220612, 4.6028265953063965, 0.14293938875198364, 0.01712707057595253, 0.01595309004187584, 0.031060300767421722, 0.09268367290496826, 0.21761436760425568, 0.026326995342969894, 0.01102306880056858, 0.05883414298295975, 0.009278958663344383, 0.013058841228485107, 0.0033210483379662037, 0.017826151102781296, 0.005375648848712444, 0.009780127555131912, 0.02344464510679245, 0.04349854215979576, 0.013138172216713428, 0.015352511778473854, 0.030427392572164536, 0.0867728665471077, 0.019310608506202698, 0.030446209013462067, 0.004763930104672909, 0.01070859469473362, 0.0150799211114645, 0.3969247043132782, 0.10979007929563522, 4.561267852783203, 0.01790853962302208, 0.016116203740239143, 0.040066614747047424, 0.2888287305831909, 0.07042209804058075, 0.026125552132725716, 0.07942894101142883, 0.20595809817314148, 0.04206269234418869, 0.011513185687363148, 0.015594026073813438, 0.009878711774945259, 0.0032581838313490152, 0.013726265169680119, 0.01543340366333723, 0.008825598284602165, 0.004856371786445379, 0.011896262876689434, 0.165451318025589, 0.01026961114257574, 0.005432788282632828, 0.030305203050374985, 0.05960623919963837, 0.33001503348350525, 0.00900938455015421, 0.009538142010569572, 0.06456881761550903, 0.016986478120088577, 0.005587161052972078, 0.04828305542469025, 0.005204097367823124, 0.04867284372448921, 0.025491364300251007, 0.05313306301832199, 0.016266733407974243, 0.015715358778834343, 0.023812636733055115, 0.016118327155709267, 0.020941969007253647, 0.036855392158031464, 0.012227822095155716, 0.18996402621269226, 0.099754199385643, 0.03578726202249527, 0.12947306036949158, 4.554565906524658, 0.015278811566531658, 0.018738266080617905, 0.037002790719270706, 0.02305767312645912, 0.0649738609790802, 0.05854348838329315, 0.02915835939347744, 0.030012574046850204, 0.10995584726333618, 0.07132305949926376, 0.1625833511352539, 0.03622514382004738, 0.24615725874900818, 0.04101986438035965, 0.06691769510507584, 0.21476465463638306, 0.017867758870124817, 0.03206515684723854, 0.05362691730260849, 0.01836421713232994, 0.02258862555027008, 0.02551550418138504, 0.5282058715820312, 0.040993597358465195, 0.062401965260505676, 0.05259212478995323, 0.05622458830475807, 0.42179954051971436, 0.07348436117172241, 4.599743843078613, 0.0449831523001194, 0.048671651631593704, 0.3961315155029297, 0.008932802826166153, 0.014260954223573208, 0.020516199991106987, 0.05085444450378418, 0.1818128079175949, 0.2326454073190689, 0.054807353764772415, 0.03578514978289604, 0.036403410136699677, 0.054326172918081284, 0.017341753467917442, 0.008004600182175636, 0.11194602400064468, 0.22769924998283386, 0.06481168419122696, 0.006424534134566784, 0.010756328701972961, 0.02756631188094616, 0.01837312802672386, 0.0960140973329544, 0.03520932048559189, 0.04401850327849388, 0.3960455358028412, 0.015769395977258682, 0.02933451533317566, 0.07460664212703705, 0.03485013172030449, 0.014196614734828472, 0.05609927326440811, 0.050071924924850464, 0.02042730525135994, 0.06020582467317581, 0.055292777717113495, 0.030381469056010246, 0.10777084529399872, 0.05596913397312164, 0.047792039811611176, 0.03374350816011429, 0.02618403173983097, 0.03486572206020355, 0.03629644587635994, 0.029702361673116684, 0.04529444873332977, 0.02420198731124401, 0.02623153105378151, 0.09118683636188507, 0.023457396775484085, 0.02605631947517395, 0.012566374614834785, 0.02476167492568493, 0.28499874472618103, 0.10383421927690506, 4.599789142608643, 0.14474418759346008, 0.030032537877559662, 0.009411869570612907, 0.009203765541315079, 0.20118220150470734, 0.28292781114578247, 0.3706454634666443, 0.11928202211856842, 1.4293186664581299, 0.4394366443157196, 1.4402577877044678, 0.2766578197479248, 0.2802168130874634, 0.22188377380371094, 0.3730318248271942, 0.030001968145370483, 0.009072904475033283, 0.13651520013809204, 0.07727333158254623, 0.013154951855540276, 0.01079198345541954, 0.022126611322164536, 0.008453644812107086, 0.03636758774518967, 0.013331681489944458, 0.03996440768241882, 0.0703422874212265, 0.018666379153728485, 0.026610130444169044, 0.12675043940544128, 0.16599251329898834, 0.0713219940662384, 0.13352909684181213, 0.038639865815639496, 0.06307341158390045, 0.060490190982818604, 0.06942080706357956, 0.07354645431041718, 4.616776466369629, 0.01882380247116089, 0.03906957805156708, 0.01203665230423212, 0.011354045942425728, 0.03264842927455902, 0.007335175760090351, 0.00716870604082942, 0.07300212979316711, 0.03580845147371292, 0.18855267763137817, 0.0134775061160326, 0.09952307492494583, 0.02801891416311264, 0.043359097093343735, 0.022272059693932533, 0.03229610249400139, 0.008921358734369278, 0.008381550200283527, 0.011610530316829681, 0.020186133682727814, 0.01248511578887701, 0.03319171071052551, 0.08465728163719177, 0.029832668602466583, 0.04434097558259964, 0.012159166857600212, 0.017821025103330612, 0.016216930001974106, 0.02799961343407631, 0.049101024866104126, 0.3552972674369812, 0.020561737939715385, 0.0045663439668715, 0.006966042332351208, 0.00755645614117384, 0.039398193359375, 0.02769635245203972, 0.01158328540623188, 0.011363335885107517, 0.02412732131779194, 0.005143818445503712, 0.01985820382833481, 0.009360648691654205, 0.012826045043766499, 0.033776745200157166, 4.609258651733398, 0.17465640604496002, 0.02325895056128502, 0.006896255537867546, 0.00836244784295559, 0.010036771185696125, 0.010081068612635136, 0.033802032470703125, 0.03125431761145592, 0.03847257047891617, 0.048738379031419754, 0.009643061086535454, 0.009770567528903484, 0.22556357085704803, 0.5205972790718079, 0.1458795964717865, 0.06726713478565216, 0.07115408778190613, 0.08484216034412384, 0.02315322868525982, 0.47707754373550415, 0.02266237884759903, 0.06345285475254059, 0.05032486841082573, 0.0410202257335186, 0.014901932328939438, 0.03938383236527443, 0.01858135685324669, 0.02240213192999363, 0.08175161480903625, 0.036962177604436874, 0.09383727610111237, 0.21213571727275848, 0.04878336936235428, 0.037372782826423645, 0.2856215238571167, 0.08826518803834915, 0.1804971843957901, 0.17144310474395752, 0.06083197519183159, 0.04983363300561905, 0.11358675360679626, 0.020022310316562653, 0.06619267165660858, 0.03181001543998718, 0.07324759662151337, 4.5988664627075195, 0.17719002068042755, 0.01702575571835041, 0.01261475682258606, 0.024565905332565308, 0.09828869253396988, 0.01782745122909546, 0.018763819709420204, 0.035039022564888, 0.0504249706864357, 0.1602420210838318, 0.05938052013516426, 0.0197759997099638, 0.040420226752758026, 1.6901103258132935, 0.06097925081849098, 0.20747533440589905, 0.05918870121240616, 0.027122758328914642, 0.043403975665569305, 0.012201135978102684, 0.007893521338701248, 0.06532248109579086, 0.11078370362520218, 0.017051994800567627, 0.009353616274893284, 0.004466630984097719, 0.010976938530802727, 0.008530429564416409, 0.007944736629724503, 0.014078224077820778, 0.01167979184538126, 0.027756499126553535, 0.021959897130727768, 0.04148000478744507, 0.015099451877176762, 0.015535945072770119, 4.593228340148926, 0.08297090232372284, 0.08865085989236832, 0.018874401226639748, 0.013516038656234741, 0.012634465470910072, 0.01215255819261074, 0.06809471547603607, 0.030843542888760567, 0.023572741076350212, 0.026781495660543442, 0.011973158456385136, 0.11636862903833389, 0.024140087887644768, 0.27123314142227173, 0.013273654505610466, 0.009248599410057068, 0.03795434534549713, 0.014170649461448193, 0.09046109020709991, 0.008438722230494022, 0.02248518168926239, 0.04865322634577751, 0.10408906638622284, 0.12349200993776321, 0.023446792736649513, 0.0138999680057168, 0.009900950826704502, 0.03217349201440811, 0.011875098571181297, 0.0147774126380682, 0.018538635224103928, 0.18950669467449188, 0.019224151968955994, 0.012501426041126251, 0.18754950165748596, 0.047561705112457275, 0.015446403063833714, 4.5839338302612305, 0.062296122312545776, 0.0293256938457489, 0.1593998223543167, 0.02800481766462326, 0.012443889863789082, 0.013688391074538231, 0.06469555199146271, 0.038669269531965256, 0.013893011026084423, 0.05774524807929993, 0.05687250196933746, 0.02556379698216915, 0.04592926800251007, 0.08012685179710388, 0.029006551951169968, 0.10520407557487488, 0.034135602414608, 0.027083516120910645, 0.04060252010822296, 0.05770055577158928, 4.598918914794922, 0.10124453902244568, 0.7036451101303101, 0.03069993108510971, 0.12956997752189636, 0.27326056361198425, 0.13545463979244232, 0.42664122581481934, 0.15356463193893433, 0.42160069942474365, 0.09796550124883652, 0.0683753490447998, 0.10445129871368408, 0.719234824180603, 0.0826227068901062, 0.1449396014213562, 4.581823348999023, 0.2653825283050537, 0.03165431320667267, 0.010739300400018692, 0.009935924783349037, 0.32147878408432007, 0.035795148462057114, 0.05964989215135574, 0.15846507251262665, 0.018658049404621124, 0.011599688790738583, 0.40152186155319214, 0.39067593216896057, 1.1706516742706299, 0.20112764835357666, 0.12067215144634247, 0.24656538665294647, 0.801654577255249, 1.6964943408966064, 0.4488790035247803, 0.4697299003601074, 0.1652677357196808, 0.04949802905321121, 0.16750799119472504, 0.11820422857999802, 0.09057985246181488, 0.09210506826639175, 0.18908089399337769, 0.12099967151880264, 0.1628943383693695, 0.3054904341697693, 0.3696163594722748, 0.5130707025527954, 0.9918929934501648, 0.9264546632766724, 0.8218998312950134, 1.057556390762329, 0.45762017369270325, 2.5699405670166016, 4.533889293670654, 0.3336526155471802, 0.04013921692967415, 0.14101624488830566, 0.282434344291687, 0.37102097272872925, 0.16842731833457947, 0.5539965033531189, 0.1644698977470398, 0.9009973406791687, 1.3821542263031006, 0.6589546203613281, 0.7641479969024658, 4.580593109130859, 0.6820235252380371, 0.6516843438148499, 0.09900376945734024, 0.8893687725067139, 0.5721297264099121, 0.13880012929439545, 0.41738104820251465, 0.8461834788322449, 3.0731444358825684, 4.217455863952637, 2.462435007095337, 0.024416174739599228, 14.066627502441406, 16.770030975341797, 4.591274261474609, 0.04767444729804993, 0.018156440928578377, 0.33444640040397644, 0.24333889782428741, 0.8151684999465942, 0.48165789246559143, 0.21508906781673431, 1.2087839841842651, 1.462608814239502, 1.3423702716827393, 0.36931121349334717, 1.0938668251037598, 0.7602720260620117, 4.573673248291016, 0.2875543236732483, 0.12481220811605453, 0.5151103734970093, 0.03465571254491806, 0.2739744782447815, 0.18754787743091583, 0.01603260450065136, 0.05482397601008415, 0.061396487057209015, 0.2576184570789337, 0.16205190122127533, 0.157144695520401, 0.1049010157585144, 0.16362658143043518, 0.08096269518136978, 0.14986954629421234, 0.08717768639326096, 0.12189619988203049, 0.16362988948822021, 0.5811756253242493, 0.03899671509861946, 0.30845293402671814, 2.410001516342163, 0.1933208703994751, 0.21092090010643005, 0.23882001638412476, 0.15189266204833984, 0.2596370577812195, 0.866378903388977, 1.1645866632461548, 0.11793245375156403, 0.39160406589508057, 0.1153978481888771, 0.5940094590187073, 0.18403905630111694, 0.22759482264518738, 0.20654451847076416, 0.07899320125579834, 0.10781149566173553, 0.18754923343658447, 0.10910534113645554, 0.22806712985038757, 0.09653086960315704, 0.5370374917984009, 0.05539892986416817, 0.4559820294380188, 0.037363287061452866, 0.1643201857805252, 0.0296087134629488, 4.561249732971191, 0.03406208008527756, 0.026330363005399704, 0.015531553886830807, 0.020489990711212158, 0.09243614971637726, 0.26644784212112427, 0.10904126614332199, 0.6266345977783203, 0.41054922342300415, 0.08512803912162781, 0.19170144200325012, 0.029509536921977997, 0.08934809267520905, 0.018405085429549217, 0.03337033838033676, 4.56785774230957, 0.057422008365392685, 0.034541673958301544, 0.01616334170103073, 0.01822236180305481, 0.0932258814573288, 0.10603024065494537, 0.11509451270103455, 0.5428533554077148, 0.2957669794559479, 0.08206334710121155, 0.7158279418945312, 2.31661319732666, 0.5327795147895813, 0.4068140387535095, 0.9220726490020752, 0.11146412789821625, 0.21981728076934814, 0.539776623249054, 0.20897552371025085, 0.09014809131622314, 0.05495377629995346, 0.06710167229175568, 0.6549391746520996, 4.573624134063721, 0.2900245189666748, 0.059633903205394745, 0.10496102273464203, 0.5254497528076172, 0.3994098901748657, 0.06688373535871506, 0.209137424826622, 0.8196095824241638, 0.2811766564846039, 0.18907588720321655, 0.042494021356105804, 0.6804669499397278, 0.030979663133621216, 0.03885471075773239, 0.016777466982603073, 0.39918816089630127, 0.6158229112625122, 0.0176679864525795, 0.04448115825653076, 0.08987629413604736, 4.580653190612793, 4.316096782684326, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [22.541107177734375, 0.07063612341880798, 0.01087221410125494, 0.046068254858255386, 0.02128264307975769, 0.17815075814723969, 0.054142069071531296, 0.473210871219635, 0.19638022780418396, 1.0, 0.15639011561870575, 0.38262003660202026, 0.2792521119117737, 0.10173599421977997, 2.6926016807556152, 2.7370171546936035, 0.3313210606575012, 0.0933896154165268, 0.07307495176792145, 0.35461246967315674, 0.2927459478378296, 3.414006233215332, 5.778470039367676, 0.3559555411338806, 0.08175645768642426, 0.08973616361618042, 0.34314489364624023, 0.6260284185409546, 1.9425268173217773, 9.78489875793457, 0.7837443351745605, 0.1349327266216278, 0.2167031466960907, 1.3086878061294556, 4.467126846313477, 0.24401259422302246, 0.0746140256524086, 0.035700250416994095, 0.03125004842877388, 0.05236130580306053, 0.015474211424589157, 0.010662030428647995, 0.26936060190200806, 0.9305884838104248, 0.11705288290977478, 0.026180824264883995, 0.16991513967514038, 0.037365030497312546, 0.05463555082678795, 0.11626210808753967, 0.07760894298553467, 0.1369011253118515, 0.10440382361412048, 0.07032813876867294, 0.05127895995974541, 1.7329504489898682, 0.13537463545799255, 0.025430098176002502, 0.05744493752717972, 0.0349125899374485, 0.04149986058473587, 0.030248422175645828, 0.06154536083340645, 0.04312673956155777, 0.02708165906369686, 0.021031660959124565, 0.04685084521770477, 4.488762855529785, 0.04483877867460251, 0.0445849671959877, 0.04139379411935806, 0.07063832879066467, 0.0328325591981411, 0.039807721972465515, 0.20900920033454895, 0.04607394337654114, 0.0568317249417305, 0.026315290480852127, 0.03402499109506607, 0.030349956825375557, 0.028103061020374298, 0.03440219908952713, 0.012275046668946743, 0.029412537813186646, 4.481071472167969, 0.0931134968996048, 0.0340585932135582, 0.010401868261396885, 0.011020418256521225, 0.0770738497376442, 0.05999571457505226, 0.0716712698340416, 0.039762914180755615, 0.028410574421286583, 0.04711592197418213, 0.01576208509504795, 0.011184979230165482, 0.27844905853271484, 0.12245281040668488, 0.062210872769355774, 0.09108597040176392, 0.2788441479206085, 1.3783488273620605, 0.08798321336507797, 0.17212894558906555, 0.07426542043685913, 0.01997755840420723, 0.07670573145151138, 0.42198848724365234, 0.7135522365570068, 0.1706443428993225, 0.018479736521840096, 0.021492989733815193, 0.05097964033484459, 0.06085206940770149, 0.024192139506340027, 0.055698998272418976, 4.48444938659668, 0.20738938450813293, 0.07751329988241196, 0.042909059673547745, 0.07360686361789703, 0.11511924862861633, 0.06827150285243988, 0.036905210465192795, 0.02114710584282875, 0.01688222959637642, 0.04556805640459061, 0.014731813222169876, 0.04039961099624634, 0.018428323790431023, 0.024031519889831543, 0.012494700029492378, 0.02199268527328968, 0.014594636857509613, 0.014691393822431564, 0.01569189503788948, 0.03703248128294945, 0.018807098269462585, 4.492921829223633, 0.10863830149173737, 0.045629195868968964, 0.011187184602022171, 0.007792004384100437, 0.042310744524002075, 0.19752910733222961, 0.03126358613371849, 0.02784266695380211, 0.0834764763712883, 0.023619547486305237, 0.012319674715399742, 0.15860481560230255, 0.10968446731567383, 0.18845921754837036, 0.5352497100830078, 0.14573146402835846, 0.3982331454753876, 0.12418510019779205, 0.10385208576917648, 0.41919198632240295, 1.029865026473999, 0.19497184455394745, 0.04385615140199661, 0.8706523776054382, 0.3864838778972626, 0.16093847155570984, 1.0299770832061768, 0.23507747054100037, 0.13510631024837494, 0.03642735630273819, 0.2886638045310974, 0.1483427733182907, 0.10691658407449722, 0.09112997353076935, 0.028735550120472908, 0.03125125542283058, 0.1261821985244751, 0.04619641974568367, 4.484286785125732, 0.07734686136245728, 0.038548313081264496, 0.00936067197471857, 0.007545182015746832, 0.03526844084262848, 0.009472358040511608, 0.01710662618279457, 0.014379085041582584, 0.03363874927163124, 0.012253954075276852, 0.007767955772578716, 0.029993558302521706, 0.06078823655843735, 4.45607328414917, 0.06521932780742645, 0.025182530283927917, 0.009158342145383358, 0.007762287277728319, 0.08773535490036011, 0.034187689423561096, 0.016707483679056168, 0.023725667968392372, 0.007238416001200676, 0.006418934557586908, 0.03924020007252693, 0.04478023946285248, 0.16474467515945435, 0.045969534665346146, 0.0537542998790741, 0.04961313307285309, 0.025418445467948914, 0.10762180387973785, 0.050101540982723236, 0.030760370194911957, 0.03416234627366066, 0.020247677341103554, 0.008351241238415241, 0.008712617680430412, 0.5530986189842224, 0.06392815709114075, 0.03035987913608551, 0.05839566886425018, 0.016610026359558105, 0.009514985606074333, 0.05666588246822357, 0.20944692194461823, 0.23638808727264404, 0.19360092282295227, 1.3840562105178833, 0.045174192637205124, 0.03720710426568985, 0.012319067493081093, 0.008642036467790604, 0.08806692808866501, 0.2388804405927658, 0.03954958915710449, 0.03234395757317543, 0.10458647459745407, 0.04877350851893425, 0.022474829107522964, 0.03773805499076843, 0.05270364508032799, 0.018810633569955826, 0.006376221776008606, 0.008373484015464783, 0.00762652512639761, 0.020188624039292336, 0.5282942056655884, 1.1982179880142212, 0.1679893136024475, 0.044546108692884445, 0.04864837974309921, 0.10111363232135773, 0.041872523725032806, 0.13384196162223816, 0.05820491909980774, 0.1539766788482666, 0.07814033329486847, 0.027548979967832565, 0.04097111523151398, 0.08973770588636398, 0.016718383878469467, 0.056202590465545654, 0.13745570182800293, 0.0620468370616436, 0.0844232589006424, 0.027575410902500153, 0.05444277450442314, 0.18455475568771362, 0.028149638324975967, 0.036517150700092316, 0.03774917125701904, 0.04156849905848503, 0.03263178840279579, 0.006484835408627987, 0.008719566278159618, 0.011206388473510742, 0.0076425145380198956, 0.13987138867378235, 0.03288882225751877, 0.06405886262655258, 0.024632086977362633, 0.01941106468439102, 0.3097262978553772, 0.02932460978627205, 0.013319041579961777, 0.012964210473001003, 0.022165680304169655, 0.024425193667411804, 0.017544370144605637, 0.17164753377437592, 0.06010143458843231, 0.020083613693714142, 0.020067958161234856, 0.025699343532323837, 4.488794326782227, 0.061243243515491486, 0.03592006117105484, 0.01358876470476389, 0.030332501977682114, 0.011676063761115074, 0.05064648017287254, 0.024474121630191803, 0.04139503836631775, 0.025009358301758766, 0.00523346196860075, 0.009087384678423405, 0.015709320083260536, 0.1081957072019577, 0.011078947223722935, 0.028816232457756996, 0.02238265611231327, 0.0632537230849266, 0.014130706898868084, 0.009040892124176025, 0.009651648811995983, 0.010484061203897, 0.018877344205975533, 0.015276056714355946, 4.48883581161499, 0.09402098506689072, 0.04583393782377243, 0.013601722195744514, 0.008117439225316048, 0.011303802952170372, 0.07117292284965515, 0.14438128471374512, 0.007838358171284199, 0.0035987594164907932, 0.017152391374111176, 0.03774774819612503, 0.02768770046532154, 0.013301081955432892, 0.29911190271377563, 0.025070730596780777, 0.04358191415667534, 0.01040182076394558, 0.1014496311545372, 0.0417938157916069, 0.0720742717385292, 0.0348963662981987, 0.03540570288896561, 0.0066041769459843636, 0.032105907797813416, 0.01789279468357563, 0.030824923887848854, 0.013578785583376884, 0.010693894699215889, 0.018216954544186592, 4.494517803192139, 0.0889965146780014, 0.01820642687380314, 0.0069147320464253426, 0.009740467183291912, 0.05699840933084488, 0.06532119959592819, 0.05511590838432312, 0.28046536445617676, 0.10472977161407471, 0.11890548467636108, 0.28567224740982056, 0.08765798807144165, 0.04553140699863434, 0.9869840145111084, 0.06538566946983337, 0.0666332095861435, 0.04890507087111473, 0.17385075986385345, 0.02678859792649746, 0.1296708732843399, 0.039147645235061646, 0.01810283027589321, 0.0344473235309124, 0.03255174309015274, 0.05094593018293381, 0.030225690454244614, 0.04849507659673691, 0.15309351682662964, 0.10260961949825287, 0.03319897875189781, 0.06335274130105972, 0.06881751120090485, 0.02035905420780182, 0.06444898992776871, 4.489794731140137, 0.0460699200630188, 0.014040371403098106, 0.009022211655974388, 0.028384609147906303, 0.01986335776746273, 0.04590899124741554, 0.009516045451164246, 0.018524901941418648, 0.021468013525009155, 0.007693270221352577, 0.009173672646284103, 0.004676894750446081, 0.013413705863058567, 0.0063484953716397285, 0.01170603558421135, 0.009498151019215584, 0.02747519686818123, 0.008991492912173271, 0.006214769557118416, 0.02346091717481613, 0.05933085083961487, 0.01194977480918169, 0.014481996186077595, 0.006148219108581543, 0.007863865233957767, 0.0190802700817585, 0.3296874165534973, 0.14736956357955933, 4.449699401855469, 0.017135988920927048, 0.03386388346552849, 0.0820416659116745, 0.23304587602615356, 0.023888451978564262, 0.010651557706296444, 0.012655599974095821, 0.019829634577035904, 0.016654614359140396, 0.009822750464081764, 0.008926899172365665, 0.008022709749639034, 0.004635246004909277, 0.007640958763659, 0.006617709528654814, 0.010583820752799511, 0.018623270094394684, 0.011757507920265198, 0.15933187305927277, 0.005411745980381966, 0.004279746674001217, 0.015343456529080868, 0.014675939455628395, 0.27740782499313354, 0.02084125205874443, 0.010372957214713097, 0.010335370898246765, 0.004643491934984922, 0.0021486340556293726, 0.003597086062654853, 0.003648438723757863, 0.02166774496436119, 0.014521620236337185, 0.026051027700304985, 0.009679771959781647, 0.007100789342075586, 0.021944768726825714, 0.008922088891267776, 0.03358990326523781, 0.02627643570303917, 0.012770608067512512, 0.15685783326625824, 0.09611870348453522, 0.052196018397808075, 0.16554659605026245, 4.443375587463379, 0.01819334179162979, 0.025793548673391342, 0.04655640944838524, 0.010542139410972595, 0.027245204895734787, 0.029131051152944565, 0.013662328012287617, 0.01809866540133953, 0.012331013567745686, 0.01848476752638817, 0.012018296867609024, 0.03431035205721855, 0.011240179650485516, 0.007763687055557966, 0.02424776926636696, 0.06871283054351807, 0.035817116498947144, 0.12539811432361603, 0.03228785842657089, 0.005985882133245468, 0.017105812206864357, 0.01979341357946396, 0.33943697810173035, 0.029288331046700478, 0.018945924937725067, 0.02389908768236637, 0.0835733637213707, 0.007895933464169502, 0.01013775821775198, 4.486745357513428, 0.03575507178902626, 0.03644094616174698, 0.8478720784187317, 0.012669205665588379, 0.01494261808693409, 0.011320211924612522, 0.023989712819457054, 0.022590532898902893, 0.03782375901937485, 0.016525639221072197, 0.013844729401171207, 0.0127764493227005, 0.01263510063290596, 0.010867946781218052, 0.004106450825929642, 0.0327564962208271, 0.036151230335235596, 0.01276845671236515, 0.006392079405486584, 0.005785628221929073, 0.00850727129727602, 0.00996340811252594, 0.02604583464562893, 0.020555417984724045, 0.012810565531253815, 0.33736249804496765, 0.02066626399755478, 0.009167893789708614, 0.010276507586240768, 0.027132507413625717, 0.009598879143595695, 0.03624062240123749, 0.01861959882080555, 0.031906113028526306, 0.09703298658132553, 0.044521257281303406, 0.01530351210385561, 0.044867951422929764, 0.11198323965072632, 0.08485904335975647, 0.2773594856262207, 0.15368661284446716, 0.03144725412130356, 0.0222425889223814, 0.039562344551086426, 0.07089648395776749, 0.03319041058421135, 0.03147527575492859, 0.06816782802343369, 0.026878491044044495, 0.020481273531913757, 0.012504687532782555, 0.10598362982273102, 0.1864907443523407, 0.07828931510448456, 4.4867658615112305, 0.08307922631502151, 0.02448068931698799, 0.008232805877923965, 0.008836805820465088, 0.11504040658473969, 0.03151802718639374, 0.015397732146084309, 0.16695073246955872, 0.08919751644134521, 0.05450610816478729, 0.03300037980079651, 0.024326616898179054, 0.22909224033355713, 0.040040481835603714, 0.2888920307159424, 0.019703103229403496, 0.005076814442873001, 0.008582895621657372, 0.013939637690782547, 0.01967782899737358, 0.014954280108213425, 0.05382400378584862, 0.00961268600076437, 0.03510994464159012, 0.01190563291311264, 0.03289440646767616, 0.00951738003641367, 0.014619817025959492, 0.013190735131502151, 0.07403526455163956, 0.021365799009799957, 0.00909649208188057, 0.029031535610556602, 0.03557779639959335, 0.006516283843666315, 0.003578461706638336, 0.034181129187345505, 0.021768685430288315, 4.503097057342529, 0.022326596081256866, 0.008207345381379128, 0.021827399730682373, 0.01777402125298977, 0.011348074302077293, 0.011797910556197166, 0.005635282024741173, 0.029404550790786743, 0.03661169484257698, 0.031313467770814896, 0.024675751104950905, 0.07184387743473053, 0.02340269833803177, 0.004639101214706898, 0.01061891671270132, 0.03103521466255188, 0.007361892610788345, 0.007329163141548634, 0.006847930606454611, 0.024942850694060326, 0.006575966253876686, 0.024717101827263832, 0.04621058702468872, 0.00907488539814949, 0.05250415951013565, 0.02962988242506981, 0.01941402442753315, 0.033940207213163376, 0.0326850563287735, 0.02590717375278473, 0.3542085289955139, 0.016850057989358902, 0.0056786565110087395, 0.009927349165081978, 0.006667002569884062, 0.01890716701745987, 0.007088812068104744, 0.008594111539423466, 0.0042402008548378944, 0.008312189020216465, 0.002013792283833027, 0.006259423680603504, 0.010249496437609196, 0.01642380654811859, 0.021262140944600105, 4.495731353759766, 0.11475104093551636, 0.03204596787691116, 0.006713195238262415, 0.009139278903603554, 0.010534297674894333, 0.011296027339994907, 0.032429713755846024, 0.026002932339906693, 0.02828962169587612, 0.03379707410931587, 0.010955452919006348, 0.01003100536763668, 0.06519512087106705, 1.596392035484314, 0.8209465742111206, 0.0334281399846077, 0.04733475670218468, 0.06890572607517242, 0.025174980983138084, 0.261466383934021, 0.020797623321413994, 0.03266620263457298, 0.02884935587644577, 0.04456942901015282, 0.01740599051117897, 0.027703694999217987, 0.030924789607524872, 0.03471316397190094, 0.08957822620868683, 0.040318988263607025, 0.06340561807155609, 0.05922970175743103, 0.02869664877653122, 0.05499633774161339, 0.2497183084487915, 0.043061867356300354, 0.01569618098437786, 0.07143549621105194, 0.04276180639863014, 0.11818525195121765, 0.0810939148068428, 0.018973711878061295, 0.015231859870254993, 0.04780857264995575, 0.11407618224620819, 4.4858880043029785, 0.03497964143753052, 0.020443839952349663, 0.009118336252868176, 0.03442160412669182, 0.06857075542211533, 0.015789933502674103, 0.014153387397527695, 0.02683354914188385, 0.019264303147792816, 0.05008509010076523, 0.020684273913502693, 0.021148324012756348, 0.019169721752405167, 0.01343002263456583, 0.02397163212299347, 0.21696528792381287, 0.01349834818392992, 0.01558954082429409, 0.008898572064936161, 0.013922379352152348, 0.006542343180626631, 0.1077568382024765, 0.14106307923793793, 0.030044056475162506, 0.008019644767045975, 0.002445110585540533, 0.007726164534687996, 0.007776402868330479, 0.010413197800517082, 0.028470739722251892, 0.01935911737382412, 0.031090596690773964, 0.017338356003165245, 0.0191653985530138, 0.016433097422122955, 0.023764610290527344, 4.480499744415283, 0.03709441423416138, 0.052707113325595856, 0.015987977385520935, 0.009561227634549141, 0.00975478533655405, 0.007346765603870153, 0.007718562614172697, 0.013284153304994106, 0.013364307582378387, 0.01899654231965542, 0.008987100794911385, 0.02185956761240959, 0.019857466220855713, 0.2278321385383606, 0.02452690154314041, 0.00909002497792244, 0.01554805412888527, 0.012934505939483643, 0.041082847863435745, 0.005998382344841957, 0.01284843496978283, 0.006791308522224426, 0.1108812689781189, 0.11807684600353241, 0.026447344571352005, 0.01581663265824318, 0.007076292298734188, 0.024520905688405037, 0.010459334589540958, 0.00908578746020794, 0.008415492251515388, 0.17418771982192993, 0.01769578643143177, 0.008256406523287296, 0.05831336975097656, 0.036030229181051254, 0.01487759780138731, 4.471469402313232, 0.06406958401203156, 0.3701499402523041, 0.08675411343574524, 0.017676033079624176, 0.012533599510788918, 0.010259153321385384, 0.044080693274736404, 0.048850055783987045, 0.019281510263681412, 0.015741199254989624, 0.027473043650388718, 0.06246970593929291, 0.0663127452135086, 0.10824993252754211, 0.02317832224071026, 0.08739520609378815, 0.03414328023791313, 0.05217187851667404, 0.05524696409702301, 0.05407727509737015, 4.4859137535095215, 0.05373050644993782, 0.055296920239925385, 0.024207070469856262, 0.056486014276742935, 0.22941473126411438, 0.04868184030056, 0.1340590864419937, 0.10686313360929489, 0.3776947259902954, 0.043324582278728485, 0.04359959810972214, 0.05920511111617088, 0.19377417862415314, 0.07829692959785461, 0.13445201516151428, 4.469284534454346, 0.08285197615623474, 0.023575976490974426, 0.010492709465324879, 0.008411556482315063, 0.09812840074300766, 0.029379481449723244, 0.025243882089853287, 0.053395360708236694, 0.014187635853886604, 0.008666946552693844, 0.06638586521148682, 2.0796031951904297, 0.07888080924749374, 0.023223288357257843, 0.09485326707363129, 0.38344889879226685, 1.0601613521575928, 0.08347171545028687, 0.04236562177538872, 0.06828573346138, 0.03724902123212814, 0.012620187364518642, 0.0811866819858551, 0.041565924882888794, 0.042948029935359955, 0.035905636847019196, 0.018642600625753403, 0.07698538899421692, 0.03729971870779991, 0.04854563623666763, 0.1047239750623703, 0.11285348236560822, 0.29878106713294983, 0.4585973918437958, 1.846972107887268, 0.20510981976985931, 0.09230677783489227, 0.4021601676940918, 4.423338890075684, 0.12715326249599457, 0.03514355793595314, 0.3803023099899292, 0.16676048934459686, 0.24716994166374207, 0.19371995329856873, 0.2663359045982361, 0.04742797464132309, 0.31129810214042664, 0.03341950476169586, 0.20060792565345764, 0.651023805141449, 4.468240261077881, 0.23987224698066711, 0.6845294833183289, 0.08666742593050003, 0.9664559364318848, 0.3403449058532715, 0.07866865396499634, 0.16829904913902283, 0.10467390716075897, 0.39909204840660095, 0.39956799149513245, 0.24793142080307007, 0.014276478439569473, 0.2369622141122818, 0.6658174395561218, 4.478468894958496, 0.026172420009970665, 0.015185407362878323, 0.04004070162773132, 0.062280334532260895, 0.024987375363707542, 0.036564476788043976, 0.021323520690202713, 0.23106618225574493, 0.13058976829051971, 0.18519560992717743, 0.06396113336086273, 0.08249297738075256, 0.1549728512763977, 4.461493015289307, 0.09949630498886108, 0.03759355470538139, 0.06623497605323792, 0.01772330515086651, 0.12299852073192596, 0.03569801524281502, 0.014988554641604424, 0.08681027591228485, 0.09215337038040161, 0.06577335298061371, 0.12504428625106812, 0.021354202181100845, 0.03192178159952164, 0.05028175190091133, 0.03709590062499046, 0.04986100643873215, 0.03148074448108673, 0.17080162465572357, 0.21993257105350494, 0.26138922572135925, 0.015073468908667564, 0.1600581407546997, 0.32611584663391113, 0.10090526938438416, 0.08451848477125168, 0.06888006627559662, 0.04163585975766182, 0.16706471145153046, 1.4575371742248535, 0.05290469899773598, 0.06421101838350296, 0.11198492348194122, 0.0561852790415287, 0.2763044834136963, 0.20735588669776917, 0.07380294799804688, 0.07794970273971558, 0.025823324918746948, 0.02906505949795246, 0.12357339262962341, 0.06734498590230942, 0.06287717819213867, 0.14628411829471588, 0.04514653608202934, 0.04143272712826729, 0.08231931179761887, 0.02384374663233757, 0.07902989536523819, 0.03191584348678589, 4.449646949768066, 0.02390308305621147, 0.016880284994840622, 0.014881535433232784, 0.015148266218602657, 0.058317311108112335, 0.020174439996480942, 0.11387299746274948, 1.3217662572860718, 0.045108895748853683, 0.016688473522663116, 0.028196483850479126, 0.09409212321043015, 0.018159011378884315, 0.012996047735214233, 0.06738164275884628, 4.456181526184082, 0.07642069458961487, 0.041610751301050186, 0.01991453766822815, 0.036692578345537186, 0.25414860248565674, 0.20784986019134521, 0.7683472037315369, 0.3198753595352173, 0.31120848655700684, 0.10366121679544449, 0.2595900595188141, 0.12087912857532501, 0.27278679609298706, 0.3039989471435547, 0.49412834644317627, 0.5626547932624817, 0.15493306517601013, 0.158268004655838, 0.5366809368133545, 0.06743364036083221, 0.036421291530132294, 0.3885037899017334, 4.409372806549072, 4.461485862731934, 0.2818772792816162, 0.057201579213142395, 0.14792345464229584, 0.14267927408218384, 0.2116394191980362, 0.1059354841709137, 0.10446883738040924, 0.5795601010322571, 0.05437524616718292, 0.06735552847385406, 0.047524482011795044, 0.06714693456888199, 0.021746817976236343, 0.1887337863445282, 0.03419497609138489, 0.03314296156167984, 0.08697187155485153, 0.02788117155432701, 0.14531472325325012, 0.046910084784030914, 4.4682111740112305, 4.868799209594727, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [29.821950912475586, 0.027212239801883698, 0.006563233677297831, 0.022297613322734833, 0.014785903505980968, 0.06751232594251633, 0.019850829616189003, 0.06146463751792908, 0.03546542674303055, 0.17176349461078644, 0.1273079216480255, 1.0, 0.7412087917327881, 0.17607799172401428, 0.0875038206577301, 0.07963589578866959, 0.14049486815929413, 0.03177543729543686, 0.028117744252085686, 0.12715545296669006, 0.08403709530830383, 0.07766943424940109, 0.06685924530029297, 0.16532573103904724, 0.02783357910811901, 0.040038686245679855, 0.11592824012041092, 0.13752275705337524, 0.13928952813148499, 0.1874169409275055, 0.23490555584430695, 0.11544288694858551, 0.07140158861875534, 0.49323156476020813, 4.769804000854492, 0.19317029416561127, 0.043029140681028366, 0.029859330505132675, 0.026123398914933205, 0.012686979956924915, 0.008242339827120304, 0.04491208493709564, 0.0842026025056839, 0.21355220675468445, 0.040744490921497345, 0.024991637095808983, 0.15201589465141296, 0.07105724513530731, 0.30112746357917786, 0.22629885375499725, 0.06845947355031967, 0.13595353066921234, 0.06245904043316841, 0.06729258596897125, 0.0677449107170105, 0.11805474758148193, 0.029320931062102318, 0.01696820557117462, 0.0274374820291996, 0.08381427079439163, 0.042790308594703674, 0.05047633498907089, 0.08620964735746384, 0.08117473870515823, 0.0588664710521698, 0.0556982159614563, 0.09349972009658813, 4.793436527252197, 0.20009824633598328, 0.08013191819190979, 0.05031619220972061, 0.044074878096580505, 0.05877935513854027, 0.07588914036750793, 0.9999449849128723, 0.14797692000865936, 0.022515540942549706, 0.022602500393986702, 0.08094047755002975, 0.06877899914979935, 0.5705150365829468, 0.0853937417268753, 0.07141738384962082, 0.20072047412395477, 4.785214424133301, 0.06105894595384598, 0.012144866399466991, 0.00745875621214509, 0.02587272599339485, 0.06573722511529922, 0.1474798619747162, 0.08835986256599426, 0.031887236982584, 0.02303735539317131, 0.012149025686085224, 0.007069536950439215, 0.012726335786283016, 0.11604324728250504, 0.06449821591377258, 0.034513846039772034, 0.06456969678401947, 0.24229837954044342, 0.3669806718826294, 0.03962450474500656, 0.16792896389961243, 0.05317769944667816, 0.03184950724244118, 0.06626657396554947, 0.2801029682159424, 0.5036393404006958, 0.0538620799779892, 0.04652241989970207, 0.03662995994091034, 0.06385429203510284, 0.19941207766532898, 0.14352434873580933, 0.22545424103736877, 4.788910388946533, 0.0903916209936142, 0.02372051775455475, 0.04751826077699661, 0.09049485623836517, 0.10078184306621552, 0.054436832666397095, 0.09459658712148666, 0.04510824382305145, 0.076185442507267, 0.1403031349182129, 0.05586943402886391, 0.09147439152002335, 0.10711827874183655, 0.20561030507087708, 0.05080670490860939, 0.05480397492647171, 0.08245547860860825, 0.036125846207141876, 0.02048201858997345, 0.06094181910157204, 0.040907129645347595, 4.798417091369629, 0.06420913338661194, 0.012069710530340672, 0.007443562150001526, 0.017510684207081795, 0.04061116650700569, 3.0409321784973145, 0.01772204041481018, 0.018155504018068314, 0.008364432491362095, 0.006523781456053257, 0.015553280711174011, 0.02966947667300701, 0.02490343153476715, 0.03462878242135048, 0.03796350955963135, 0.037585996091365814, 0.05963628739118576, 0.06470984220504761, 0.29926660656929016, 0.167429581284523, 0.5207142233848572, 0.2551593482494354, 0.10692651569843292, 0.44410547614097595, 0.06466452777385712, 0.23953044414520264, 0.23115700483322144, 0.11869553476572037, 0.09853405505418777, 0.11991679668426514, 0.40242576599121094, 0.20330467820167542, 0.2859886884689331, 0.41184502840042114, 0.10446494817733765, 0.20310238003730774, 1.5682361125946045, 0.43538421392440796, 4.788774490356445, 0.05663435161113739, 0.008923284709453583, 0.006554142571985722, 0.01107221469283104, 0.03359292447566986, 0.03852696716785431, 0.0143788643181324, 0.012117885984480381, 0.00829752255231142, 0.0058177774772048, 0.00828739907592535, 0.022014698013663292, 0.05617261677980423, 4.757367134094238, 0.053689707070589066, 0.008890608325600624, 0.006016405299305916, 0.01070844940841198, 0.045662444084882736, 0.02464193105697632, 0.014560660347342491, 0.008998452685773373, 0.005424557253718376, 0.007065172307193279, 0.041176896542310715, 0.03822854533791542, 0.11424426734447479, 0.21575063467025757, 0.23047783970832825, 0.04830702021718025, 0.025774048641324043, 0.06870775669813156, 0.024454724043607712, 0.06955543905496597, 0.028383677825331688, 0.01240258663892746, 0.009715433232486248, 0.011319547891616821, 0.13265275955200195, 0.022181469947099686, 0.01927599310874939, 0.0081414096057415, 0.006920835934579372, 0.009332746267318726, 0.048288494348526, 0.1391187608242035, 0.19109368324279785, 1.5995395183563232, 0.33589407801628113, 0.03878961130976677, 0.009420836344361305, 0.007239902392029762, 0.010067345574498177, 0.08877307921648026, 0.8559741973876953, 0.25225701928138733, 0.3110208511352539, 0.3980403542518616, 0.21624577045440674, 0.18976248800754547, 0.5444261431694031, 0.04680920019745827, 0.024114327505230904, 0.009398490190505981, 0.024010611698031425, 0.01099006924778223, 0.029272722080349922, 0.11085699498653412, 0.29258963465690613, 0.05520184710621834, 0.060190409421920776, 0.08161856979131699, 0.21644490957260132, 0.09071767330169678, 0.11182352155447006, 0.08358831703662872, 0.14430803060531616, 0.07953931391239166, 0.09588878601789474, 0.0544544942677021, 0.15296316146850586, 0.11979622393846512, 0.19532045722007751, 0.5070579648017883, 0.18679457902908325, 0.11832639575004578, 0.027108347043395042, 0.04363372549414635, 0.0697936862707138, 0.023183312267065048, 0.018712680786848068, 0.04146720468997955, 0.03217688947916031, 0.041330963373184204, 0.010571876540780067, 0.40872722864151, 0.13605260848999023, 0.15053917467594147, 0.13015016913414001, 0.05626966059207916, 0.5202453136444092, 0.5213832259178162, 0.39816805720329285, 0.2615094780921936, 0.028029389679431915, 0.017728708684444427, 0.01326957531273365, 0.03940156474709511, 0.03529021143913269, 0.024229835718870163, 0.35495877265930176, 0.06767979264259338, 0.03303758427500725, 0.027972761541604996, 0.04385188966989517, 4.793519973754883, 0.10028208792209625, 0.06888601183891296, 0.02962135523557663, 0.027342386543750763, 0.02397935464978218, 0.06662125140428543, 0.02646556682884693, 0.021822506561875343, 0.032795753329992294, 0.007909220643341541, 0.012547705322504044, 0.01462638471275568, 0.18671849370002747, 0.0204990953207016, 0.044840164482593536, 0.04706448316574097, 0.01856486313045025, 0.02105318196117878, 0.010590463876724243, 0.031225334852933884, 0.010692181997001171, 0.02250511199235916, 0.01740722917020321, 4.793526649475098, 2.444685220718384, 0.09341661632061005, 0.01752479188144207, 0.09886012971401215, 0.03954726457595825, 0.04999484866857529, 0.18526677787303925, 0.025667641311883926, 0.0159344170242548, 0.03717558830976486, 0.09947372227907181, 0.05105401575565338, 0.02524275705218315, 0.29388928413391113, 0.11066240072250366, 0.1673719584941864, 0.15124505758285522, 0.07208311557769775, 0.11439378559589386, 0.042761046439409256, 0.0857439935207367, 0.059531256556510925, 0.022850293666124344, 0.0817204937338829, 0.08868712931871414, 0.15631426870822906, 0.022929023951292038, 0.03327975049614906, 0.039876703172922134, 4.799989700317383, 0.06583153456449509, 0.011264879256486893, 0.007505911402404308, 0.018376542255282402, 0.07407669723033905, 0.03298959136009216, 0.01547828409820795, 0.16239182651042938, 0.03458781540393829, 0.05503446236252785, 0.7572432160377502, 0.10027863830327988, 0.10527767986059189, 0.3908923864364624, 0.04548082873225212, 0.08429399132728577, 0.04123753309249878, 0.014154630713164806, 0.009390001185238361, 0.03904958814382553, 0.059361036866903305, 0.05662906914949417, 0.03741704672574997, 0.030509863048791885, 0.024243703112006187, 0.022331461310386658, 0.19552554190158844, 0.09919720888137817, 0.06615327298641205, 0.06990060210227966, 0.0662563368678093, 0.029780492186546326, 0.014645070768892765, 0.07507043331861496, 4.794588088989258, 0.14922457933425903, 0.012811706401407719, 0.006100010126829147, 0.016068264842033386, 0.05299278348684311, 0.11343066394329071, 0.02574404701590538, 0.013521336950361729, 0.0356997512280941, 0.006930307950824499, 0.006643539294600487, 0.0032627019099891186, 0.016319433227181435, 0.0102841816842556, 0.010323765687644482, 0.016318006440997124, 0.0358547605574131, 0.009863194078207016, 0.005304314196109772, 0.045886699110269547, 0.1360413134098053, 0.02594057098031044, 0.02533116191625595, 0.008213512599468231, 0.013721778057515621, 0.02836812473833561, 0.2880246341228485, 0.12070919573307037, 4.750511169433594, 0.04269041121006012, 0.03130843862891197, 0.05070974677801132, 0.23835140466690063, 0.02362939901649952, 0.006331710144877434, 0.012778389267623425, 0.07697582244873047, 0.0339624397456646, 0.009303377941250801, 0.008662231266498566, 0.008784700185060501, 0.00378411915153265, 0.006318498868495226, 0.010952290147542953, 0.012896547093987465, 0.00829184241592884, 0.04683885723352432, 0.20740705728530884, 0.011264640837907791, 0.015310500748455524, 0.03140953183174133, 0.03649371862411499, 0.2532779574394226, 0.021129658445715904, 0.005079199559986591, 0.10393306612968445, 0.03512032330036163, 0.008147508837282658, 0.036219522356987, 0.005024192854762077, 0.02590107172727585, 0.014120576903223991, 0.025546183809638023, 0.0033340095542371273, 0.031097566708922386, 0.025450704619288445, 0.013102464377880096, 0.06955920904874802, 0.3952596187591553, 0.031479883939027786, 0.1110043078660965, 0.1437172144651413, 0.145923912525177, 0.1503082513809204, 4.74338436126709, 0.07217853516340256, 0.030238037928938866, 0.09154200553894043, 0.009667378850281239, 0.03510677069425583, 0.018781401216983795, 0.008897906169295311, 0.02224132791161537, 0.08334650099277496, 0.04829921945929527, 0.018483413383364677, 0.016564443707466125, 0.0384521558880806, 0.05869508534669876, 0.06462180614471436, 0.13056814670562744, 0.04010918736457825, 0.02147536724805832, 0.04788411408662796, 0.023273825645446777, 0.024479307234287262, 0.017171747982501984, 0.31787025928497314, 0.033124618232250214, 0.03713895380496979, 0.21518640220165253, 0.13514569401741028, 0.04965493828058243, 0.04475051909685135, 4.791537284851074, 0.04516385495662689, 0.04458599537611008, 1.605243444442749, 0.011380653828382492, 0.006239039823412895, 0.008595307357609272, 0.024552546441555023, 0.07235698401927948, 0.13692621886730194, 0.05248799920082092, 0.04075077921152115, 0.02047823555767536, 0.02399849332869053, 0.017895344644784927, 0.007718014530837536, 0.08407282084226608, 0.25099238753318787, 0.16948409378528595, 0.01053646206855774, 0.011002974584698677, 0.023974817246198654, 0.02451821230351925, 0.07018014788627625, 0.05570103973150253, 0.03761788457632065, 0.3176667094230652, 0.04441254585981369, 0.02092793583869934, 0.024686116725206375, 0.03569086268544197, 0.013793102465569973, 0.05405335873365402, 0.05244288593530655, 0.11834943294525146, 0.2075214385986328, 0.1402631253004074, 0.026496736332774162, 0.18047338724136353, 0.06021784245967865, 0.03634671866893768, 0.027078235521912575, 0.0543346144258976, 0.07226835191249847, 0.08915451169013977, 0.06878312677145004, 0.2217375934123993, 0.057944245636463165, 0.08787314593791962, 0.4625392556190491, 0.058256156742572784, 0.08779303729534149, 0.0337657630443573, 0.06376492232084274, 0.3534701466560364, 0.23806029558181763, 4.7915472984313965, 0.05756897106766701, 0.009743481874465942, 0.005221864674240351, 0.0102619007229805, 0.06879649311304092, 0.21966159343719482, 0.1537223905324936, 0.3109802007675171, 0.9148417711257935, 0.19618986546993256, 0.2644706070423126, 0.07076836377382278, 0.12569914758205414, 0.16357755661010742, 0.24312551319599152, 0.01574045792222023, 0.004527328070253134, 0.005498758517205715, 0.010178837925195694, 0.023414652794599533, 0.011061877012252808, 0.02023884654045105, 0.011566368862986565, 0.017538566142320633, 0.013209836557507515, 0.023101922124624252, 0.011673428118228912, 0.007334797643125057, 0.007072638254612684, 0.06472624838352203, 0.031074494123458862, 0.014971181750297546, 0.15161478519439697, 0.016590626910328865, 0.015864457935094833, 0.010483648627996445, 0.06273694336414337, 0.13282667100429535, 4.809664249420166, 0.026660870760679245, 0.007781340274959803, 0.02502235770225525, 0.011996363289654255, 0.008506521582603455, 0.015486491844058037, 0.02011992782354355, 0.043034255504608154, 0.040612801909446716, 0.1342834085226059, 0.0179770365357399, 0.16669297218322754, 0.027103211730718613, 0.005771327763795853, 0.0219071377068758, 0.03518911823630333, 0.015493558719754219, 0.02380056492984295, 0.01960974559187889, 0.031056789681315422, 0.007532459683716297, 0.04831875115633011, 0.06426012516021729, 0.019687827676534653, 0.2122875154018402, 0.02209075540304184, 0.025248276069760323, 0.06649242341518402, 0.08804892748594284, 0.069535031914711, 0.4317411184310913, 0.02215936779975891, 0.007592746987938881, 0.010255107656121254, 0.02292954921722412, 0.03741006180644035, 0.022073756903409958, 0.02847275882959366, 0.015315097756683826, 0.02479289472103119, 0.007966142147779465, 0.052700914442539215, 0.009789836592972279, 0.03953087329864502, 0.048715535551309586, 4.8013715744018555, 0.10371342301368713, 0.048603639006614685, 0.01427497435361147, 0.04105738550424576, 0.01689814403653145, 0.022834498435258865, 0.018470128998160362, 0.02378569170832634, 0.023686682805418968, 0.015902098268270493, 0.009932933375239372, 0.025884315371513367, 0.1662452518939972, 0.2470725029706955, 0.079728864133358, 0.0316215343773365, 0.04629867523908615, 0.19389024376869202, 0.06608820706605911, 0.5816031098365784, 0.1561301350593567, 0.16754290461540222, 0.35085469484329224, 1.0003372430801392, 0.24134424328804016, 0.7409200668334961, 0.18016158044338226, 0.23870128393173218, 0.7764952182769775, 0.08403365314006805, 0.13535994291305542, 0.1483282893896103, 0.19572800397872925, 0.43402764201164246, 0.25492164492607117, 0.029832199215888977, 0.02085830830037594, 0.23449739813804626, 0.1549966037273407, 0.11639947444200516, 0.29381272196769714, 0.028045974671840668, 0.016633667051792145, 0.03351958096027374, 0.0645468607544899, 4.79071044921875, 0.13723650574684143, 0.012220734730362892, 0.006725499872118235, 0.025927437469363213, 0.22121880948543549, 0.0381743349134922, 0.03532271832227707, 0.07064661383628845, 0.010529214516282082, 0.09620320051908493, 0.03669024258852005, 0.02045349031686783, 0.012507903389632702, 0.014762600883841515, 0.03442636877298355, 0.24378933012485504, 0.016050830483436584, 0.023684430867433548, 0.008765637874603271, 0.011427819728851318, 0.005583822727203369, 0.02186737209558487, 0.01730024628341198, 0.017535900697112083, 0.008485349826514721, 0.005749051459133625, 0.009467902593314648, 0.01528510358184576, 0.010619319044053555, 0.04898230731487274, 0.013720009475946426, 0.07618074864149094, 0.030086712911725044, 0.012018557637929916, 0.014431428164243698, 0.024416226893663406, 4.7846999168396, 0.12048979103565216, 0.08719007670879364, 0.020663756877183914, 0.014238694682717323, 0.010926124639809132, 0.008895143866539001, 0.013744236901402473, 0.04156383126974106, 0.09902381151914597, 0.04926738142967224, 0.024452993646264076, 0.0609884038567543, 0.100499227643013, 0.27393487095832825, 0.03573773056268692, 0.009263470768928528, 0.04742170870304108, 0.030329562723636627, 0.01857214979827404, 0.011996433138847351, 0.012095028534531593, 0.010681845247745514, 0.0322674959897995, 0.01932687684893608, 0.041274793446063995, 0.024028543382883072, 0.019469445571303368, 0.07962843030691147, 0.0956888198852539, 0.0756617859005928, 0.08802096545696259, 0.20263558626174927, 0.031510207802057266, 0.015702437609434128, 0.6608957052230835, 0.7013958096504211, 0.37335920333862305, 4.774511337280273, 0.09276923537254333, 0.04156149923801422, 0.1107124537229538, 0.03662572428584099, 0.012410222552716732, 0.012917262502014637, 0.23453451693058014, 0.023422643542289734, 0.011529285460710526, 0.021002762019634247, 0.02121780253946781, 0.021341273561120033, 0.041007719933986664, 0.09036276489496231, 0.029093442484736443, 0.2151741087436676, 0.049120739102363586, 0.06919324398040771, 0.03675466775894165, 0.24515503644943237, 4.790689945220947, 0.08148466050624847, 0.5904096961021423, 0.021305840462446213, 0.07305939495563507, 0.14566220343112946, 0.07570276409387589, 0.6953836679458618, 0.26126936078071594, 0.574478805065155, 0.04820707440376282, 0.04659026116132736, 0.17431384325027466, 1.1925501823425293, 0.5395367741584778, 0.4335545599460602, 4.772272109985352, 0.06405314803123474, 0.009334933944046497, 0.006426393985748291, 0.013813287019729614, 0.13683180510997772, 0.01961752027273178, 0.020204097032546997, 0.009335567243397236, 0.007035974413156509, 0.014184997417032719, 0.04629562050104141, 0.062434084713459015, 0.2596331238746643, 0.04290482774376869, 0.0778927356004715, 0.27489733695983887, 0.3814013600349426, 0.04884042590856552, 0.037724338471889496, 0.1812749058008194, 0.04815349727869034, 0.017229629680514336, 0.06306980550289154, 0.04457306116819382, 0.03379248455166817, 0.046216584742069244, 0.03109264001250267, 0.06766678392887115, 0.050856754183769226, 0.0729949027299881, 0.03804479539394379, 0.05098904296755791, 0.10725872218608856, 0.19598768651485443, 0.28092923760414124, 0.13772894442081451, 0.041642896831035614, 0.6460915803909302, 4.721288204193115, 0.1284058392047882, 0.012939822860062122, 0.04188648238778114, 0.06532677263021469, 0.09246139228343964, 0.18053239583969116, 0.17139965295791626, 0.09372313320636749, 0.23922693729400635, 0.07236936688423157, 0.07876831293106079, 0.16174933314323425, 4.770948886871338, 0.11283716559410095, 0.0863303393125534, 0.0328807607293129, 0.1031767725944519, 0.05145953595638275, 0.032359134405851364, 0.04849785938858986, 0.11103992909193039, 0.39101749658584595, 1.9715535640716553, 0.6983527541160583, 0.009273538365960121, 0.3471532166004181, 0.3488186299800873, 4.782381057739258, 0.05609748139977455, 0.010702809318900108, 0.025276103988289833, 0.1530148684978485, 0.0866846814751625, 0.04419883340597153, 0.0909542590379715, 0.0976165235042572, 0.09792226552963257, 0.4750160574913025, 0.038937151432037354, 0.17218762636184692, 0.17261895537376404, 4.763698577880859, 0.060916513204574585, 0.06175757944583893, 0.104936882853508, 0.015391655266284943, 0.25032466650009155, 0.02938038669526577, 0.010520602576434612, 0.0469096414744854, 0.0511186309158802, 0.5476828813552856, 0.1614973396062851, 0.06416179984807968, 0.05506318807601929, 0.13586308062076569, 0.05050067603588104, 0.0944184958934784, 0.007867059670388699, 0.08507772535085678, 0.029275430366396904, 0.0718885287642479, 0.019645102322101593, 0.19465678930282593, 4.031727313995361, 0.5340996980667114, 0.3433714807033539, 1.755318284034729, 0.09993850439786911, 0.13663038611412048, 0.3615064024925232, 0.1355391889810562, 0.057200945913791656, 0.2332078367471695, 0.05957438796758652, 2.3316235542297363, 0.046432845294475555, 0.06435897946357727, 0.06912913918495178, 0.12103593349456787, 0.20515096187591553, 0.1256639063358307, 0.09107281267642975, 0.35877102613449097, 0.8778790235519409, 0.48906171321868896, 0.056736767292022705, 0.20897656679153442, 0.12023813277482986, 0.17361769080162048, 0.04143941402435303, 4.750571250915527, 0.014614161103963852, 0.011882712133228779, 0.006751430220901966, 0.009206985123455524, 0.036772795021533966, 0.015430006198585033, 0.04986391216516495, 0.27255746722221375, 0.03552992641925812, 0.03777671605348587, 0.030838755890727043, 0.03963056579232216, 0.022998422384262085, 0.018154509365558624, 0.01860867254436016, 4.757418155670166, 0.04061640053987503, 0.01264597661793232, 0.015820983797311783, 0.020001068711280823, 0.0566248744726181, 0.10146689414978027, 0.09579446166753769, 0.3349754512310028, 0.11444614082574844, 0.3219401240348816, 0.19990581274032593, 2.9576268196105957, 0.14022065699100494, 0.1188807263970375, 0.1429450511932373, 0.22528454661369324, 0.10518195480108261, 0.2701728045940399, 0.09503026306629181, 0.02950480952858925, 0.036376453936100006, 0.06463408470153809, 1.0713605880737305, 4.7636518478393555, 0.20864082872867584, 0.0647604912519455, 0.28900787234306335, 0.10591132193803787, 0.11560361087322235, 0.14033888280391693, 0.433418333530426, 0.33395692706108093, 0.037966709583997726, 0.03225582838058472, 0.047641102224588394, 0.021328654140233994, 0.06275562942028046, 0.09013636410236359, 0.04435906559228897, 0.02996411919593811, 0.03379729762673378, 0.03203955292701721, 0.061525482684373856, 0.05660410597920418, 4.771076202392578, 4.454683303833008, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], [28.137523651123047, 0.12142758071422577, 0.012635498307645321, 0.04391474276781082, 0.021265225484967232, 0.06113734096288681, 0.0672154650092125, 0.19191519916057587, 0.15552584826946259, 0.4457240700721741, 0.288195937871933, 1.0, 0.04982680454850197, 0.02109304815530777, 0.028676504269242287, 0.01852184720337391, 0.026621118187904358, 0.015082153491675854, 0.012826643884181976, 0.0515715554356575, 0.02631412446498871, 0.024965699762105942, 0.015200069174170494, 0.030543264001607895, 0.011205334216356277, 0.011342816986143589, 0.04674108698964119, 0.0568142905831337, 0.06305881589651108, 0.059379175305366516, 0.05933261662721634, 0.04457125440239906, 0.03941331058740616, 0.19876301288604736, 4.654825687408447, 0.020113667473196983, 0.008644459769129753, 0.007227097637951374, 0.0062456196174025536, 0.003829921130090952, 0.0025185346603393555, 0.004078082740306854, 0.037482451647520065, 0.07455940544605255, 0.0107407346367836, 0.01298514660447836, 0.06217537075281143, 0.01743735931813717, 0.021724479272961617, 0.016584623605012894, 0.03358142077922821, 0.06206122785806656, 0.027576498687267303, 0.035863228142261505, 0.04400843381881714, 0.011167030781507492, 0.019520685076713562, 0.010548129677772522, 0.02071293443441391, 0.019326230511069298, 0.02864319458603859, 0.023680305108428, 0.08574387431144714, 0.04918602854013443, 0.05232720077037811, 0.030406594276428223, 0.06749933958053589, 4.677600860595703, 0.012529237195849419, 0.03121841698884964, 0.014148468151688576, 0.02615557238459587, 0.02509227767586708, 0.023020636290311813, 0.7495540380477905, 0.10346520692110062, 0.006317871622741222, 0.007912307046353817, 0.008863898925483227, 0.008368385955691338, 0.005702554248273373, 0.0337396040558815, 0.009987566620111465, 0.018325068056583405, 4.669910907745361, 0.009010078385472298, 0.0031760726124048233, 0.0019371319795027375, 0.0031317532993853092, 0.013343285769224167, 0.0068240598775446415, 0.010010967031121254, 0.011016299948096275, 0.007892472669482231, 0.003195863915607333, 0.0021008907351642847, 0.0028938534669578075, 0.03591261804103851, 0.013636201620101929, 0.008499007672071457, 0.01200818084180355, 0.023684266954660416, 0.1198139414191246, 0.007199966348707676, 0.009287950582802296, 0.005118096712976694, 0.0024874338414520025, 0.00592003483325243, 0.014661024324595928, 0.006338061764836311, 0.005798025988042355, 0.004214857704937458, 0.0057122716680169106, 0.011830571107566357, 0.01066674292087555, 0.005636528134346008, 0.006539389491081238, 4.673341274261475, 0.009068711660802364, 0.009937954135239124, 0.0031423219479620457, 0.004842548165470362, 0.004222122486680746, 0.004785484168678522, 0.009330572560429573, 0.0032063277903944254, 0.00552335986867547, 0.00726259034126997, 0.004092798568308353, 0.06171984598040581, 0.013002879917621613, 0.004410539288073778, 0.00453392555937171, 0.0033056524116545916, 0.01126121450215578, 0.007741980720311403, 0.007427426986396313, 0.024170059710741043, 0.03479443117976189, 4.682458400726318, 0.004925472196191549, 0.002300294116139412, 0.0012074052356183529, 0.0014269781531766057, 0.005906766280531883, 0.0030037211254239082, 0.0028405040502548218, 0.0021489427890628576, 0.002110462635755539, 0.0015016389079391956, 0.0020476372446864843, 0.003491284791380167, 0.0033250933047384024, 0.0034589676652103662, 0.0035905386321246624, 0.0017876120982691646, 0.002178431488573551, 0.0016711371717974544, 0.09990721940994263, 0.0034811371006071568, 0.004254493862390518, 0.011594908311963081, 0.07197051495313644, 0.12110009789466858, 0.00729219987988472, 0.005221552215516567, 0.02539093792438507, 0.0025738277472555637, 0.003318198025226593, 0.0033722654916346073, 0.012270592153072357, 0.006325543392449617, 0.004719114396721125, 0.011444705538451672, 0.00281905778683722, 0.0035991340409964323, 0.00865260511636734, 0.004214718472212553, 4.673159599304199, 0.003691956168040633, 0.001836148090660572, 0.001203780178911984, 0.001602891250513494, 0.006444777362048626, 0.003278120420873165, 0.0035816847812384367, 0.0027373014017939568, 0.0020442712120711803, 0.0017292252741754055, 0.002271941863000393, 0.007321068551391363, 0.009130420163273811, 4.6425957679748535, 0.004659855738282204, 0.002066661138087511, 0.001480396487750113, 0.0019489391706883907, 0.013487315736711025, 0.0066970158368349075, 0.0035230545327067375, 0.0025167791172862053, 0.001727278926409781, 0.0022319206036627293, 0.005865945480763912, 0.010493619367480278, 0.036438729614019394, 0.012845505028963089, 0.0034855918493121862, 0.007896330207586288, 0.012832852080464363, 0.04123096913099289, 0.012626433745026588, 0.02260030247271061, 0.016820279881358147, 0.004241268150508404, 0.002218941692262888, 0.002057386562228203, 0.016162332147359848, 0.005685077048838139, 0.002899124752730131, 0.0019400581950321794, 0.0014763791114091873, 0.001931196777150035, 0.00488313939422369, 0.014980841428041458, 0.019800085574388504, 0.014021593146026134, 0.08668910712003708, 0.004446408711373806, 0.001630317186936736, 0.0013889797264710069, 0.0014912765473127365, 0.007221622858196497, 0.019131027162075043, 0.004681417718529701, 0.0036136293783783913, 0.005209667608141899, 0.006168391555547714, 0.0038921921513974667, 0.00579096470028162, 0.010058529675006866, 0.00557286711409688, 0.006203493103384972, 0.00869838334619999, 0.005966234020888805, 0.007416531443595886, 0.057458456605672836, 0.08670103549957275, 0.014100930653512478, 0.016043666750192642, 0.021529262885451317, 0.07339353114366531, 0.03948373347520828, 0.01484580710530281, 0.02222214639186859, 0.05626174807548523, 0.023028627038002014, 0.032874658703804016, 0.03272959217429161, 0.06505098938941956, 0.04506165534257889, 0.14444661140441895, 0.29182666540145874, 0.07331928610801697, 0.05408501625061035, 0.011081180535256863, 0.009993396699428558, 0.04017641022801399, 0.025535278022289276, 0.014608990401029587, 0.01626761630177498, 0.015151355415582657, 0.027687687426805496, 0.01049073040485382, 0.3760313391685486, 0.09429510682821274, 0.18350820243358612, 0.06564279645681381, 0.03671428561210632, 0.234380304813385, 0.306851863861084, 0.2418498396873474, 0.12654200196266174, 0.009351635351777077, 0.005046236328780651, 0.00648370198905468, 0.004292675759643316, 0.01612970046699047, 0.015540368854999542, 0.13993437588214874, 0.06896357238292694, 0.028361301869153976, 0.03975573554635048, 0.20947445929050446, 4.677661418914795, 0.005282360129058361, 0.010006267577409744, 0.0032846794929355383, 0.0026373628061264753, 0.004340133164077997, 0.012426760047674179, 0.010901355184614658, 0.0071237036027014256, 0.011800890788435936, 0.005256329663097858, 0.006186535581946373, 0.010373849421739578, 0.21958965063095093, 0.023612357676029205, 0.005976262502372265, 0.01408819854259491, 0.008861344307661057, 0.02430490031838417, 0.009241674095392227, 0.031173501163721085, 0.01104711089283228, 0.017336485907435417, 0.01891174167394638, 4.677661895751953, 0.012999746948480606, 0.005406026262789965, 0.009830138646066189, 0.0030939080752432346, 0.0033617967274039984, 0.016633491963148117, 0.2400413155555725, 0.004718390759080648, 0.001784861320629716, 0.002127974759787321, 0.053426772356033325, 0.013319747522473335, 0.009021200239658356, 0.08516791462898254, 0.006240370683372021, 0.01528913527727127, 0.0065225535072386265, 0.037754617631435394, 0.07397998869419098, 0.019727420061826706, 0.012474330142140388, 0.05629923194646835, 0.0226786769926548, 0.07494103908538818, 0.05894622206687927, 0.08875975012779236, 0.017018798738718033, 0.02320263534784317, 0.011761205270886421, 4.684096336364746, 0.007368841674178839, 0.0024451804347336292, 0.0016588843427598476, 0.002102036029100418, 0.0051698037423193455, 0.003682326292619109, 0.003104051575064659, 0.021554291248321533, 0.0048013352788984776, 0.002405919134616852, 0.017473235726356506, 0.007219717372208834, 0.07594133913516998, 0.12745682895183563, 0.002001341199502349, 0.005101797170937061, 0.006876222789287567, 0.0017864637775346637, 0.0015138048911467195, 0.0014200324658304453, 0.003411917481571436, 0.006525220815092325, 0.0015460686990991235, 0.004844896495342255, 0.0053985100239515305, 0.011404560878872871, 0.01715543307363987, 0.0613761804997921, 0.03191273286938667, 0.04030171409249306, 0.032786909490823746, 0.007837256416678429, 0.004926583729684353, 0.01613348349928856, 4.678687572479248, 0.0028337212279438972, 0.0023450131993740797, 0.0023308424279093742, 0.0012619014596566558, 0.005814896896481514, 0.015682967379689217, 0.008110242895781994, 0.0029983739368617535, 0.013999135233461857, 0.003121213521808386, 0.0035673310048878193, 0.001397058367729187, 0.016438011080026627, 0.015689028427004814, 0.009343677200376987, 0.010428949259221554, 0.01961461640894413, 0.00845691841095686, 0.007384771481156349, 0.018561167642474174, 0.07225212454795837, 0.018556615337729454, 0.012171002104878426, 0.00562290009111166, 0.015503350645303726, 0.027658535167574883, 0.09222417324781418, 0.0315246507525444, 4.6362104415893555, 0.021797703579068184, 0.023499444127082825, 0.06338678300380707, 0.19866983592510223, 0.01953907497227192, 0.005662478506565094, 0.00578354112803936, 0.0266115702688694, 0.014428170397877693, 0.0031707121524959803, 0.004147326108068228, 0.003916800953447819, 0.0016141904052346945, 0.004464912228286266, 0.017568007111549377, 0.013699383474886417, 0.007828133180737495, 0.013284143060445786, 0.214011088013649, 0.00806360598653555, 0.0065854256972670555, 0.027790647000074387, 0.01945481449365616, 0.1193128228187561, 0.003063799813389778, 0.0023953034542500973, 0.005608464125543833, 0.003922564908862114, 0.0019689900800585747, 0.006388431414961815, 0.0023196018300950527, 0.016381198540329933, 0.008493366651237011, 0.015227673575282097, 0.001259209355339408, 0.006080944556742907, 0.010466606356203556, 0.00548351276665926, 0.025448480620980263, 0.021369807422161102, 0.017182329669594765, 0.04427949711680412, 0.03268172964453697, 0.044061534106731415, 0.031696103513240814, 4.6292290687561035, 0.02408263087272644, 0.025415904819965363, 0.05392022430896759, 0.0044856201857328415, 0.0038043842650949955, 0.0026546623557806015, 0.000883973203599453, 0.0021497139241546392, 0.0017325513763353229, 0.006869375705718994, 0.003357382258400321, 0.0033212993294000626, 0.004649830982089043, 0.0024611391127109528, 0.016998983919620514, 0.03136830776929855, 0.006293201353400946, 0.008039992302656174, 0.01103846076875925, 0.004299629013985395, 0.014405669644474983, 0.010842811316251755, 0.12925224006175995, 0.002752412110567093, 0.0019090644782409072, 0.0037496902514249086, 0.002866697032004595, 0.0016589993610978127, 0.0022178683429956436, 4.675847053527832, 0.0035668450873345137, 0.002135898917913437, 0.17574220895767212, 0.0009090777020901442, 0.0007622354314662516, 0.0010086442343890667, 0.0009404823649674654, 0.0025916690938174725, 0.011792763136327267, 0.005412375554442406, 0.002246720949187875, 0.0024497397243976593, 0.003048297017812729, 0.0042595346458256245, 0.00315057928673923, 0.05655394122004509, 0.029376020655035973, 0.01500961184501648, 0.005373742431402206, 0.004994736984372139, 0.007501258514821529, 0.014455820433795452, 0.028280483558773994, 0.011013682931661606, 0.018634214997291565, 0.11311057955026627, 0.0038491759914904833, 0.0026137332897633314, 0.003534632967785001, 0.007849310524761677, 0.003073902800679207, 0.005954614374786615, 0.014170806854963303, 0.009720221161842346, 0.04660997539758682, 0.031898707151412964, 0.02761783078312874, 0.034415628761053085, 0.011638302356004715, 0.008756100200116634, 0.006346879992634058, 0.01101094949990511, 0.012444471009075642, 0.014143639244139194, 0.016875196248292923, 0.017365431413054466, 0.007867935113608837, 0.008133534342050552, 0.03148357570171356, 0.015025867149233818, 0.025506768375635147, 0.011655361391603947, 0.016576774418354034, 0.09727590531110764, 0.06935930997133255, 4.67582893371582, 0.004726615734398365, 0.002060303930193186, 0.0013411930995061994, 0.002270284341648221, 0.00520170945674181, 0.0060469950549304485, 0.0022004288621246815, 0.11903537809848785, 0.007252872455865145, 0.0058812787756323814, 0.00393435126170516, 0.0032131511252373457, 0.0314764678478241, 0.010664258152246475, 0.10146957635879517, 0.005268631037324667, 0.0018249350832775235, 0.002472533378750086, 0.007582658901810646, 0.024190755560994148, 0.0064666722901165485, 0.012959791347384453, 0.005563932470977306, 0.008981280028820038, 0.0034357192926108837, 0.005089261569082737, 0.0031685929279774427, 0.003716643201187253, 0.003345122095197439, 0.01710803434252739, 0.007468299940228462, 0.003475222969427705, 0.00761832669377327, 0.01354893110692501, 0.01000613160431385, 0.007827606983482838, 0.049932438880205154, 0.08749234676361084, 4.693441390991211, 0.001848104177042842, 0.004601817112416029, 0.01533767394721508, 0.00629428680986166, 0.0021723350510001183, 0.003232493530958891, 0.0019816027488559484, 0.007682560011744499, 0.012520418502390385, 0.011644672602415085, 0.0030013974756002426, 0.05569298937916756, 0.019298115745186806, 0.0065482500940561295, 0.017685865983366966, 0.029171619564294815, 0.015606126748025417, 0.022304609417915344, 0.02161547541618347, 0.005884074606001377, 0.00430002436041832, 0.01139889657497406, 0.08266578614711761, 0.01329342182725668, 0.028380446135997772, 0.006752786226570606, 0.008867735043168068, 0.010764461010694504, 0.014223020523786545, 0.0474715381860733, 0.12474559247493744, 0.009052826091647148, 0.004692602902650833, 0.004364086780697107, 0.006679796613752842, 0.05273272469639778, 0.008028192445635796, 0.0025092866271734238, 0.003287880914285779, 0.010242192074656487, 0.012397855520248413, 0.009811856783926487, 0.0022637080401182175, 0.006451976019889116, 0.019226957112550735, 4.685456275939941, 0.011393999680876732, 0.011938676238059998, 0.011694028973579407, 0.012974448502063751, 0.009776262566447258, 0.007242169231176376, 0.006398417986929417, 0.007924140430986881, 0.007722064852714539, 0.0040427520871162415, 0.002851220779120922, 0.005059119779616594, 0.018029814586043358, 0.08885402977466583, 0.04812378063797951, 0.01665254309773445, 0.03224959969520569, 0.04487708956003189, 0.038893233984708786, 0.28887030482292175, 0.07754845917224884, 0.07815197110176086, 0.5621560215950012, 0.164619579911232, 0.11866310238838196, 0.40964022278785706, 0.13727763295173645, 0.131155326962471, 0.4345305562019348, 0.07656767964363098, 0.10936521738767624, 0.06386519223451614, 0.1087978333234787, 0.3845738172531128, 0.11861030757427216, 0.030129743739962578, 0.028459353372454643, 0.1041160300374031, 0.06613750755786896, 0.12619268894195557, 0.2312019169330597, 0.046047624200582504, 0.033352285623550415, 0.048930440098047256, 0.09902680665254593, 4.67495584487915, 0.004583070054650307, 0.002201890805736184, 0.0033445986919105053, 0.0037036328576505184, 0.015501556918025017, 0.004844186827540398, 0.005166187882423401, 0.010681807063519955, 0.004016096703708172, 0.025147508829832077, 0.01326197199523449, 0.005311560817062855, 0.005023525096476078, 0.010296875610947609, 0.04586178809404373, 0.23206670582294464, 0.017487414181232452, 0.022005170583724976, 0.005725035909563303, 0.005199030973017216, 0.0066664619371294975, 0.0160866416990757, 0.011012759059667587, 0.019395776093006134, 0.00971924141049385, 0.0032036725897341967, 0.0061503322795033455, 0.008572801947593689, 0.00539233535528183, 0.010987410321831703, 0.0076081408187747, 0.04261043667793274, 0.023275624960660934, 0.00549208652228117, 0.008055178448557854, 0.009330062195658684, 4.669293403625488, 0.009405024349689484, 0.01364225521683693, 0.013894908130168915, 0.0023964731954038143, 0.010403119027614594, 0.010330608114600182, 0.022529371082782745, 0.04534680396318436, 0.07063743472099304, 0.0872514620423317, 0.04332195222377777, 0.053958404809236526, 0.08906619250774384, 0.3469840884208679, 0.009800279513001442, 0.0076867686584591866, 0.007378603331744671, 0.004942628089338541, 0.0065207714214921, 0.002827591262757778, 0.005116963293403387, 0.009833701886236668, 0.01811479777097702, 0.012816675938665867, 0.014086438342928886, 0.007486160844564438, 0.004129230976104736, 0.025374142453074455, 0.10354920476675034, 0.05117785185575485, 0.07464754581451416, 0.0803258866071701, 0.015950597822666168, 0.01694970577955246, 0.24699051678180695, 0.6259870529174805, 0.11507165431976318, 4.659196853637695, 0.009452111087739468, 0.0071337842382490635, 0.016394035890698433, 0.013275250792503357, 0.005949670448899269, 0.004333877936005592, 0.018438858911395073, 0.02089671604335308, 0.012384065426886082, 0.009608474560081959, 0.020317260175943375, 0.02267071232199669, 0.03715003281831741, 0.08452285081148148, 0.02408711239695549, 0.12913338840007782, 0.029065433889627457, 0.05764203146100044, 0.054451748728752136, 0.14906838536262512, 4.674986839294434, 0.01712874509394169, 0.03256194293498993, 0.011437797918915749, 0.04925741255283356, 0.05408021807670593, 0.055001042783260345, 0.05322694033384323, 0.18754500150680542, 0.10431282222270966, 0.041255682706832886, 0.045932356268167496, 0.17218826711177826, 0.9205752015113831, 0.31757405400276184, 0.40523576736450195, 4.657167434692383, 0.011377427726984024, 0.00315570505335927, 0.0022013068664819, 0.003288906067609787, 0.011682562530040741, 0.003055186476558447, 0.0029058733489364386, 0.002240370959043503, 0.0019304100424051285, 0.0025181686505675316, 0.007927577942609787, 0.004702294711023569, 0.011749997735023499, 0.003502159845083952, 0.006660790648311377, 0.10868705809116364, 0.15259431302547455, 0.0032881537918001413, 0.006109532434493303, 0.009348951280117035, 0.0044394670985639095, 0.002368531422689557, 0.005389755591750145, 0.005865141749382019, 0.005820332560688257, 0.0074825892224907875, 0.002996268915012479, 0.011423631571233273, 0.006291248369961977, 0.007375762797892094, 0.006088719237595797, 0.01019802875816822, 0.015336176380515099, 0.01438186876475811, 0.030602332204580307, 0.0049139950424432755, 0.0059333862736821175, 0.013922706246376038, 4.6080169677734375, 0.0070150792598724365, 0.0020423796959221363, 0.00505041191354394, 0.013202689588069916, 0.014011407271027565, 0.19801145792007446, 0.025086745619773865, 0.007946687750518322, 0.014186693355441093, 0.008896025829017162, 0.01899867132306099, 0.022441890090703964, 4.655838966369629, 0.008932278491556644, 0.026339344680309296, 0.0030040822457522154, 0.010298146866261959, 0.008082724176347256, 0.006171724759042263, 0.006859475281089544, 0.005998200736939907, 0.01051904633641243, 0.01826348342001438, 0.013873099349439144, 0.009741373360157013, 0.028839565813541412, 0.022665036842226982, 4.667072296142578, 0.004210739396512508, 0.0019228039309382439, 0.003949678502976894, 0.012565359473228455, 0.010143265128135681, 0.01173560693860054, 0.022842736914753914, 0.017193343490362167, 0.014289028011262417, 0.031921982765197754, 0.019897589460015297, 0.027539020404219627, 0.07790788263082504, 4.649087905883789, 0.009755355305969715, 0.021144064143300056, 0.05210147053003311, 0.010819436982274055, 0.019617896527051926, 0.019483206793665886, 0.01170938927680254, 0.019805844873189926, 0.02617369219660759, 0.08428853750228882, 0.1787879765033722, 0.023598596453666687, 0.062748484313488, 0.11707259714603424, 0.03219202533364296, 0.014081672765314579, 0.007148378994315863, 0.019371699541807175, 0.008522789925336838, 0.015930552035570145, 0.02446483075618744, 0.006574912928044796, 0.03392453119158745, 0.004243322182446718, 0.004364880733191967, 0.010617461055517197, 0.0032110242173075676, 0.007215631660073996, 0.05088956281542778, 0.007877452298998833, 0.00569468829780817, 0.024078335613012314, 0.0052295345813035965, 0.04110036790370941, 0.011045538820326328, 0.020680146291851997, 0.006970870774239302, 0.006467259488999844, 0.018286313861608505, 0.027802105993032455, 0.004065583925694227, 0.01244322955608368, 0.004477012902498245, 0.008920617401599884, 0.0065611922182142735, 0.04323809593915939, 0.01016409695148468, 0.040423862636089325, 0.025587275624275208, 4.636221885681152, 0.0031632035970687866, 0.00201927637681365, 0.0025131921283900738, 0.002353058895096183, 0.004949590191245079, 0.003156928112730384, 0.012945443391799927, 0.08015315234661102, 0.00335030909627676, 0.0029888548888266087, 0.00319931423291564, 0.0022811912931501865, 0.0026927096769213676, 0.0025749930646270514, 0.0021950097288936377, 4.642678260803223, 0.007115206681191921, 0.002319655381143093, 0.0029450049623847008, 0.0020387417171150446, 0.0040465411730110645, 0.004313969518989325, 0.006348469294607639, 0.011392606422305107, 0.010339930653572083, 0.005437057465314865, 0.008337472565472126, 0.021119505167007446, 0.02758387103676796, 0.03790001943707466, 0.03583414852619171, 0.012910318560898304, 0.0117129972204566, 0.06756705790758133, 0.0209219790995121, 0.01172380056232214, 0.007838357239961624, 0.01182637084275484, 0.13604684174060822, 4.649084091186523, 0.017698006704449654, 0.009393671527504921, 0.01549532637000084, 0.021329348906874657, 0.016766510903835297, 0.018758386373519897, 0.022101080045104027, 0.061495766043663025, 0.013423141092061996, 0.013446641154587269, 0.011494748294353485, 0.008360917679965496, 0.01424091774970293, 0.01477096602320671, 0.006075348239392042, 0.011276551522314548, 0.014476708136498928, 0.007807766553014517, 0.024267323315143585, 0.02658751606941223, 4.655963897705078, 1.7367180585861206, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]];
+
+      function App() {
+        function getColor(intensity) {
+          console.assert(0 <= intensity && intensity <= 1);
+          return `background-color: rgba(255, 0, 0, ${intensity})`;
+        }
+
+        function onSelect(sent_id) {
+          let styles = [];
+          let len = data[0].length;
+          for (let i = 0; i < len; i++) {
+            let intensity = data[sent_id][i];
+            intensity = Math.min(intensity, 1.0);
+            styles[i] = getColor(intensity);
+          }
+          this.selected = sent_id;
+          this.styles = styles;
+        }
+
+        return {
+          onSelect,
+          selected: null,
+          styles: [],
+        };
+      }
+    </script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+  </body>
+</html>
