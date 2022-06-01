@@ -12,3 +12,6 @@
 ./bin/run_sum.sh
 ```
 
+## References
+
+https://github.com/Shen-Chenhui/MReD
