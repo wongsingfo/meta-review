@@ -12,6 +12,12 @@
 ./bin/run_sum.sh
 ```
 
+## Generate control code
+
+```
+cd ./src/generate_cc
+```
+
 ## References
 
 https://github.com/Shen-Chenhui/MReD
